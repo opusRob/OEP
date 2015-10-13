@@ -33,6 +33,8 @@ component{
 	// request start
 	public boolean function onRequestStart(String targetPage){
 		// Process ColdBox Request
+
+		request.bolAdminMode = false;
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
 
 		return true;
