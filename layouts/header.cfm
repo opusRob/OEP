@@ -16,7 +16,7 @@
 			<div class="container" style="text-align: center; ">
 					<h1 style="font-size: 40px; ">Log In</h1>
 					<p style="font-size: 14px; ">Use your Opus Group Google credentials to log in.</p>
-
+					<div class="g-signin2" data-onsuccess="onSignIn" align="center"></div>
 				</cfif>
 
 			</div>
