@@ -24,7 +24,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">eddard.stark@opusgroupllc.com <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Sign Out</a></li>
+            <li><a href="javascript: signOut(); void(0); ">Sign Out</a></li>
           </ul>
         </li>
       </ul>

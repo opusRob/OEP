@@ -12,11 +12,12 @@
 
 			</div>
 		</div>
-		<div class="jumbotron" style="background: #eeeeee; color: #021139; margin-top: 0px; ">
+		<div class="jumbotron" style="background: #ffffff<!--- eeeeee --->; color: #021139; margin-top: 0px; ">
 			<div class="container" style="text-align: center; ">
 					<h1 style="font-size: 40px; ">Log In</h1>
 					<p style="font-size: 14px; ">Use your Opus Group Google credentials to log in.</p>
-					<div class="g-signin2" data-onsuccess="onSignIn" align="center"></div>
+					<!--- <div class="g-signin2" data-onsuccess="onSignIn" align="center"></div> --->
+					<div id="google_signin" align="center"></div>
 				</cfif>
 
 			</div>
