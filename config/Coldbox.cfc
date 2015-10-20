@@ -44,6 +44,19 @@
 			proxyReturnCollection 	= false
 		};
 
+		/*-- ORM services, injection, etc.: --*/
+		orm = {
+			/*-- Entity injection: --*/
+			injection = {
+				/*-- Enable it: --*/
+				enabled = true
+				/*-- The include list for injection: --*/
+				, include = ""
+				/*-- The exclude list for injection: --*/
+				, exclude = ""
+			}
+		};
+
 		// custom settings
 		settings = {
 

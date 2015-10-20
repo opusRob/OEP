@@ -23,6 +23,37 @@ component{
 	// You can add more paths or change the reload flag as well.
 	this.javaSettings = { loadPaths = [ "lib" ], reloadOnChange = false };
 
+	/*-- ORM extensions for ColdBox: --*/
+	this.mappings[ "/cborm" ] = COLDBOX_APP_ROOT_PATH & "modules/cborm";
+
+	/*-- Enable ORM: --*/
+	this.ormEnabled = true;
+	/*-- ORM datasource: --*/
+	this.dataSource = "OEP";
+	/*-- ORM config settings: --*/
+	this.ormSettings = {
+		/*-- Location of your entities (default is your convention "model" folder): --*/
+		cfcLocation = "models"
+		/*-- Choose if you want ORM to create the db for you or not: --*/
+		, dbCreate = (1 EQ 1 ? "update" : "none")
+		/*-- Log SQL or not: --*/
+		, logSQL = true
+		/*-- Don't flush at end of requests, let Active Entity manage it for you: --*/
+		, flushAtRequestEnd = false
+		/*-- Don't manage session, let Active Entity manage it for you: --*/
+		, autoManageSession = true
+		/*-- Active ORM events: --*/
+		, eventHandling = true
+		/*-- Use the Coldbox Wirebox handler for events: --*/
+		//, eventHandler = "coldbox.system.orm.hibernate.WBEventHandler"
+		, eventHandler = "cborm.models.EventHandler"
+		/*-- Additional: --*/
+		//, useDBForMapping = false
+		//, dialect = "PostgreSQL"
+		//, catalog = ""
+		//, schema = "public"
+	};
+
 	// application start
 	public boolean function onApplicationStart(){
 		application.cbBootstrap = new coldbox.system.Bootstrap( COLDBOX_CONFIG_FILE, COLDBOX_APP_ROOT_PATH, COLDBOX_APP_KEY, COLDBOX_APP_MAPPING );
@@ -36,6 +67,12 @@ component{
 
 		request.bolAdminMode = false;
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
+
+		if (structKeyExists(url, "dbinit")) {
+			writeOutput("<h2>Prepare to ormReload()...</h2>");
+			ormReload();
+			writeOutput("<h2>...ormReload() done.</h2>");
+		}
 
 		return true;
 	}

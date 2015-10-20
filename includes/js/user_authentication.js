@@ -12,8 +12,7 @@
 // }
 
 $(document).ready(
-	function() {
-		alert("asdf")
+	function() {;;
 		gapi.signin2.render(
 			"google_signin"
 			, {
@@ -38,16 +37,16 @@ function onSignIn(googleUser) {
 }
 
 function onSignOut() {
-	console.log("User has signed out of Google.");
+	console.log("Google sign-in failure.");
 }
 
 function signOut() {
 	var auth2 = gapi.auth2.getAuthInstance();
-	auth2.signOut();
-	// auth2.signOut().then(
-		// function () {
-			// console.log('User signed out.');
-			// location.reload(); 
-		// }
-	// );
+	//auth2.signOut();
+	auth2.signOut().then(
+		function () {
+			console.log('User signed out.');
+			location.reload(); 
+		}
+	);
 }
