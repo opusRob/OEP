@@ -35,7 +35,9 @@ component{
 		/*-- Location of your entities (default is your convention "model" folder): --*/
 		cfcLocation = "models"
 		/*-- Choose if you want ORM to create the db for you or not: --*/
-		, dbCreate = (1 EQ 1 ? "update" : "none")
+		, dbCreate = (
+			isDefined("url.dbinit") AND listFindNoCase("update,dropCreate,none", url.dbinit) ? url.dbinit : "none"
+		)
 		/*-- Log SQL or not: --*/
 		, logSQL = true
 		/*-- Don't flush at end of requests, let Active Entity manage it for you: --*/
@@ -72,6 +74,9 @@ component{
 			writeOutput("<h2>Prepare to ormReload()...</h2>");
 			ormReload();
 			writeOutput("<h2>...ormReload() done.</h2>");
+			//writeOutput("<h2>Prepare to create initial data...</h1>");
+			//createObject("component", "config.CreateInitialData").createInitialData();
+			//writeOutput("<h2>...initial data created.</h2>");
 		}
 
 		return true;
