@@ -8,8 +8,11 @@
 				<img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="visible-xs-inline"/>
 
 				<cfif request.cb_requestContext.getCurrentHandler() IS "home">
-					<h1 style="font-size: 40px; ">Welcome to the Opus Employee Portal!</h1>
-					<p style="font-size: 14px; ">Your source for company news, messages from management, social media, resources and more.</p>
+					<h1 class="visible-lg-block" style="font-size: xx-large; ">Welcome to the Opus Employee Portal!</h1>
+					<h1 class="visible-md-block" style="font-size: x-large; ">Welcome to the Opus Employee Portal!</h1>
+					<h1 class="visible-sm-block" style="font-size: large; ">Welcome to the Opus Employee Portal!</h1>
+					<h1 class="visible-xs-block" style="font-size: medium; ">Welcome to the Opus Employee Portal!</h1>
+					<p class="visible-lg-block visible-md-block" style="font-size: 14px; ">Your source for company news, messages from management, social media, resources and more.</p>
 
 				<cfelseif request.cb_requestContext.getCurrentHandler() IS "login">
 
