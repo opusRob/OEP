@@ -60,6 +60,11 @@ component{
 	public boolean function onApplicationStart(){
 		application.cbBootstrap = new coldbox.system.Bootstrap( COLDBOX_CONFIG_FILE, COLDBOX_APP_ROOT_PATH, COLDBOX_APP_KEY, COLDBOX_APP_MAPPING );
 		application.cbBootstrap.loadColdbox();
+		if (fileExists(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json")))
+			application.stcApplicationCustomSettings = deserializeJSON(fileRead(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json")));
+		else
+			application.stcApplicationCustomSettings = structNew();
+
 		return true;
 	}
 
@@ -74,9 +79,13 @@ component{
 			writeOutput("<h2>Prepare to ormReload()...</h2>");
 			ormReload();
 			writeOutput("<h2>...ormReload() done.</h2>");
-			//writeOutput("<h2>Prepare to create initial data...</h1>");
-			//createObject("component", "config.CreateInitialData").createInitialData();
-			//writeOutput("<h2>...initial data created.</h2>");
+			if (structKeyExists(application.stcApplicationCustomSettings, "strInitialAppDataFolderLocation")) {
+				writeOutput("<h2>Prepare to create initial data...</h1>");
+				createObject("component", "config.CreateInitialData").createInitialData(
+					application.stcApplicationCustomSettings.strInitialAppDataFolderLocation
+				);
+				writeOutput("<h2>...initial data created.</h2>");
+			}
 		}
 
 		return true;
