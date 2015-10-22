@@ -3,6 +3,7 @@
 */
 component extends="cborm.models.EventHandler"{
 	function index(event,rc,prc){
+		request.aryUsers = entityLoad("User");
 		event.setView("user/index");
 	}
 

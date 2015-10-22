@@ -22,6 +22,7 @@ component persistent="true" table="users" extends="cborm.models.ActiveEntity" {
 	property name="CreatedByUser" fieldType="many-to-one" fkColumn="user_create_user_id" cfc="User";
 	property name="UpdatedByUser" fieldType="many-to-one" fkColumn="user_update_user_id" cfc="User";
 
+	// Custom getters:
 
 	// Validation
 	this.constraints = {
