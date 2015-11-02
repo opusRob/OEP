@@ -11,6 +11,7 @@ component accessors=false output=false persistent=false {
 		, string user_last_name_tx=""
 		, string user_google_username_tx
 		, boolean user_is_admin_bt
+		, boolean user_active_bt
 	) {
 
 		/*-- Create the new user with initial values: --*/
@@ -22,6 +23,7 @@ component accessors=false output=false persistent=false {
 				, user_last_name_tx = arguments.user_last_name_tx
 				, user_google_username_tx = arguments.user_google_username_tx
 				, user_is_admin_bt = arguments.user_is_admin_bt
+				, user_active_bt = arguments.user_active_bt
 				, user_create_datetime_dt = now()
 			}
 		);

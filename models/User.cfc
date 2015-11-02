@@ -7,7 +7,9 @@ component persistent="true" table="users" extends="cborm.models.ActiveEntity" {
 	property name="user_id" fieldtype="id" column="user_id" generator="increment" notNull=true;
 
 	// Properties
-	property name="user_first_name_tx" ormtype="string" length=45;	property name="user_middle_name_tx" ormtype="string" length=45;	property name="user_last_name_tx" ormtype="string" length=45;	property name="user_google_username_tx" ormtype="string" length=100;	property name="user_is_admin_bt" ormtype="boolean";	//property name="user_create_user_id" ormtype="int" notNull=true;	//property name="user_update_user_id" ormtype="int";	property name="user_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="user_update_datetime_dt" ormtype="timestamp";
+	property name="user_first_name_tx" ormtype="string" length=45;	property name="user_middle_name_tx" ormtype="string" length=45;	property name="user_last_name_tx" ormtype="string" length=45;	property name="user_google_username_tx" ormtype="string" length=100;
+	property name="user_is_admin_bt" ormtype="boolean" default=false;
+	property name="user_active_bt" ormtype="boolean" default=true;	//property name="user_create_user_id" ormtype="int" notNull=true;	//property name="user_update_user_id" ormtype="int";	property name="user_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="user_update_datetime_dt" ormtype="timestamp";
 	// Relationships
 	property name="UsersCreated" fieldType="one-to-many" fkColumn="user_id" cfc="User";
 	property name="UsersUpdated" fieldType="one-to-many" fkColumn="user_id" cfc="User";

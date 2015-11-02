@@ -24,7 +24,9 @@
 	addRoute(pattern = "login", handler = "login", action = "index");
 	addRoute(pattern = "home", handler = "home", action = "index");
 
-	addRoute(pattern = "user", handler = "user", action = "index");
+	addRoute(pattern = "user/:action?", handler = "user", action = "index");
+	addRoute(pattern = "user/:action?", handler = "user", action = "add");
+	addRoute(pattern = "user/:action?", handler = "user", action = "edit");
 
 
 	/** Developers can modify the CGI.PATH_INFO value in advance of the SES

@@ -6,5 +6,51 @@ component extends="cborm.models.EventHandler"{
 		request.aryUsers = entityLoad("User");
 		event.setView("user/index");
 	}
+	function add(event,rc,prc) {
+		request.aryUser = entityNew("User");
+		event.setView("user/user");
+	}
+	function edit(event,rc,prc) {
+		request.aryUser = entityLoad("User", val(listLast(request.cb_requestContext.getCurrentRoutedURL(), "/")), true);
+		event.setView("user/user");
+	}
+	function save(event,rc,prc) {
+		if (val(arguments.rc.user_id))
+			request.aryUser = entityLoadByPK("User", val(arguments.rc.user_id));
+		else
+			request.aryUser = entityNew("User");
 
+		request.aryUser.setUser_last_name_tx(arguments.rc.user_last_name_tx);
+		request.aryUser.setUser_first_name_tx(arguments.rc.user_first_name_tx);
+		request.aryUser.setUser_middle_name_tx(arguments.rc.user_middle_name_tx);
+		request.aryUser.setUser_google_username_tx(arguments.rc.user_google_username_tx);
+		request.aryUser.setUser_is_admin_bt(structKeyExists(arguments.rc, "user_is_admin_bt") ? arguments.rc.user_is_admin_bt : false);
+		request.aryUser.setUser_active_bt(structKeyExists(arguments.rc, "user_active_bt") ? arguments.rc.user_active_bt : false);
+
+		if (val(arguments.rc.user_id)) {
+			request.aryUser.setUpdatedByUser(entityLoadByPK("User", 1));
+			request.aryUser.setUser_update_datetime_dt(now());
+		} else {
+			request.aryUser.setCreatedByUser(entityLoadByPK("User", 1));
+			request.aryUser.setUser_create_datetime_dt(now());
+		}
+
+		entitySave(request.aryUser, NOT val(arguments.rc.user_id));
+		ormFlush();
+
+		setNextEvent("user.index");
+
+	}
+	function remove(event,rc,prc) {
+		request.aryUser = entityLoadByPK("User", val(arguments.rc.user_id));
+
+		//entityDelete(request.aryUser);
+		//ORMExecuteQuery("DELETE FROM users WHERE user_id = #val(arguments.rc.user_id)#", true);
+
+		//ormFlush();
+
+		createObject("component", "userUtilities").removeUser(arguments.rc.user_id);
+
+		setNextEvent("user.index");
+	}
 }
