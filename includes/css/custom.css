@@ -112,3 +112,9 @@ div.checkbox label {
 a {
 	//color: #000000; 
 }
+
+
+
+div.paginator_div {
+	float: right; 
+}

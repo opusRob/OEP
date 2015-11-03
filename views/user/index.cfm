@@ -1,4 +1,12 @@
 <br />
+<cfoutput>
+	<!--- <div class="paginator_div">
+		#renderPaginator(
+			total_records = request.intUserCount
+			, page = url.page
+		)#
+	</div> --->
+</cfoutput>
 <table class="table table-striped table-hover table_background">
 	<tr>
 		<th>Last Name</th>

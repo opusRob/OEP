@@ -3,7 +3,24 @@
 */
 component extends="cborm.models.EventHandler"{
 	function index(event,rc,prc){
+		param url.page default = 1;
+
 		request.aryUsers = entityLoad("User");
+		//request.intUserCount = arrayLen(request.aryUsers);
+		/*request.aryUsers = entityLoad(
+			//name = "User"
+			//, filterCriteria = {}
+			//, sortOrder = {"user_last_name_tx ASC"}
+			//, options = {
+			"User"
+			, {
+				offset = (url.page * 10) + 1
+				, maxResults = 10
+			}
+		);*/
+		//request.aryUsers = ORMExecuteQuery("* FROM users", false, {offset = (url.page * 10) + 1, maxResults = 10});
+		//request.intUserCount = ORMExecuteQuery("COUNT(user_id) FROM users", true);
+
 		event.setView("user/index");
 	}
 	function add(event,rc,prc) {

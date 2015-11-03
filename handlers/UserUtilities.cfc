@@ -18,4 +18,6 @@
 
 	</cffunction>
 
+	<!--- <cffunction name="getUsers" returnType="array"> --->
+
 </cfcomponent>
