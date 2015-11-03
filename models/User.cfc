@@ -25,6 +25,25 @@ component persistent="true" table="users" extends="cborm.models.ActiveEntity" {
 	property name="UpdatedByUser" fieldType="many-to-one" fkColumn="user_update_user_id" cfc="User";
 
 	// Custom getters:
+	function getUser_full_name_tx() {
+		local.strFirstName = trim(this.getUser_first_name_tx());
+		local.strMiddleName = trim(this.getUser_middle_name_tx());
+		local.strLastName = trim(this.getUser_last_name_tx());
+
+		local.strFullName = local.strFirstName;
+
+		if (len(local.strFullName) AND len(local.strMiddleName & local.strLastName))
+			local.strFullName &= chr(32);
+
+		local.strFullName &= local.strMiddleName;
+
+		if (len(local.strFullName) AND len(local.strLastName))
+			local.strFullName &= local.strLastName;
+
+		return local.strFullName;
+
+	}
+
 
 	// Validation
 	this.constraints = {

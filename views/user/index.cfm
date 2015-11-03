@@ -17,7 +17,7 @@
 		<th class="hidden-xs">Active</th>
 		<th class="visible-md visible-lg">Last Updated</th>
 		<th class="visible-lg">Created</th>
-		<th>
+		<th style="text-align: right; ">
 			<cfoutput>
 				<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('user.add')#'; ">
 					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -33,30 +33,33 @@
 				<cfset variables.intRowCount++/>
 				<tr>
 					<td>
-						<a href="#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#">
+						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
 							#len(trim(variables.objUser.getUser_last_name_tx())) ? variables.objUser.getUser_last_name_tx() : "&nbsp;"#
-						</a>
+						<!--- </a> --->
 					</td>
 					<td>
-						<a href="#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#">
+						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
 							#len(trim(variables.objUser.getUser_first_name_tx())) ? variables.objUser.getUser_first_name_tx() : "&nbsp;"#
-						</a>
+						<!--- </a> --->
 					</td>
 					<td class="visible-lg">
-						<a href="#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#">
+						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
 							#len(trim(variables.objUser.getUser_middle_name_tx())) ? variables.objUser.getUser_middle_name_tx() : "&nbsp;"#
-						</a>
+						<!--- </a> --->
 					</td>
 					<td class="hidden-xs">
-						<a href="#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#">
+						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
 							#len(trim(variables.objUser.getUser_google_username_tx())) ? variables.objUser.getUser_google_username_tx() : "&nbsp;"#
-						</a>
+						<!--- </a> --->
 					</td>
 					<td class="hidden-xs">#yesNoFormat(variables.objUser.getUser_is_admin_bt())#</td>
 					<td class="hidden-xs">#yesNoFormat(variables.objUser.getUser_active_bt())#</td>
 					<td class="visible-md visible-lg">#isDate(variables.objUser.getUser_update_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objUser.getUser_create_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td>
+					<td style="text-align: right; ">
+						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#'; ">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
 						<button type="button" class="btn btn-danger btn-xs" onClick="userRemove(#variables.objUser.getUser_id()#)">
 							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</button>

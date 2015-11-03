@@ -7,7 +7,9 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 	property name="post_id" fieldtype="id" column="post_id" generator="increment" notNull=true;
 
 	// Properties
-	//property name="post_post_type_id" ormtype="int" notNull=true;	property name="post_headline_tx" ormtype="string" length=255 notNull=true;	property name="post_body_tx" ormtype="string" length=4000;	//property name="post_create_user_id" ormtype="int" notNull=true;	//property name="post_update_user_id" ormtype="int";	property name="post_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="post_update_datetime_dt" ormtype="timestamp";
+	//property name="post_post_type_id" ormtype="int" notNull=true;	property name="post_headline_tx" ormtype="string" length=255 notNull=true;
+	property name="post_preview_tx" ormtype="string" length=500;
+	property name="post_body_tx" ormtype="string" length=4000;	//property name="post_create_user_id" ormtype="int" notNull=true;	//property name="post_update_user_id" ormtype="int";	property name="post_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="post_update_datetime_dt" ormtype="timestamp";
 
 	// Relationships
 	property name="Tags" fieldType="many-to-many" fkColumn="posts_tags_xref_post_id" cfc="Tag" linkTable="posts_tags_xref" inverseJoinColumn="posts_tags_xref_tag_id";

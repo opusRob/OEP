@@ -28,6 +28,19 @@
 	addRoute(pattern = "user/:action?", handler = "user", action = "add");
 	addRoute(pattern = "user/:action?", handler = "user", action = "edit");
 
+	//addNameSpace(pattern = "/news", namespace = "news")
+//		.addRoute(pattern = "/", handler = "post", action = "index", namespace = "news");
+
+	addRoute(pattern = "news/:action?", handler = "news", action = "index");
+	addRoute(pattern = "news/:action?", handler = "news", action = "item");
+	addRoute(pattern = "news/:action?", handler = "news", action = "add");
+	addRoute(pattern = "news/:action?", handler = "news", action = "edit");
+
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "index");
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "item");
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "add");
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "edit");
+
 
 	/** Developers can modify the CGI.PATH_INFO value in advance of the SES
 		interceptor to do all sorts of manipulations in advance of route
