@@ -23,20 +23,26 @@ component extends="cborm.models.EventHandler"{
 		else
 			request.aryLink = entityNew("Link");
 
-		local.strFileName = request.aryLink[1].getLink_image_file_name_tx;
+		local.strFileName = request.aryLink.getLink_image_file_name_tx();
 		local.bolDeleteImageFile = structKeyExists(arguments.rc, "link_delete_image_bt") AND arguments.rc.link_delete_image_bt;
 
 		if (structKeyExists(arguments.rc, "link_image_upload_tx") AND len(trim(arguments.rc.link_image_upload_tx))) {
-			local.strFileName = "link_image_" & uCase(reReplaceNoCase(createUUID(), "[^a-zA-Z]", "", "all"));
+
+			if (len(local.strFileName) AND fileExists(expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & local.strFileName))) {
+				fileDelete(expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & local.strFileName));
+				local.strFileName = "";
+			}
+
+			local.strFileName = "link_image_" & uCase(reReplaceNoCase(createUUID(), "[^a-zA-Z0-9]", "", "all"));
 			local.stcFileUpload = fileUpload(
-				expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & local.strFileName)
-				, "link_image_upload_tx"
-				, "image/png,image/jpg,image/jpeg,image/gif"
-				, "makeUnique"
+				destination = expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation)
+				, fileField = "link_image_upload_tx"
+				, accept = "image/png,image/jpg,image/jpeg,image/gif"
+				, nameConflict = "makeUnique"
 			);
 			local.strFileName = local.stcFileUpload.serverFile;
 			local.strFullFilePath = expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & local.strFileName);
-			if (isImageFile(local.strFullFilePath) {
+			if (isImageFile(local.strFullFilePath)) {
 				local.objImage = imageNew(local.strFullFilePath);
 				imageScaleToFit(local.objImage, 64, 64);
 				imageWrite(local.objImage, local.strFullFilePath);
@@ -48,7 +54,7 @@ component extends="cborm.models.EventHandler"{
 		}
 
 		if (local.bolDeleteImageFile AND len(local.strFileName) AND fileExists(expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & local.strFileName))) {
-			fileDelete(local.strFullFilePath);
+			fileDelete(expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & local.strFileName));
 			local.strFileName = "";
 		}
 
@@ -59,10 +65,10 @@ component extends="cborm.models.EventHandler"{
 		request.aryLink.setLink_active_bt(structKeyExists(arguments.rc, "link_active_bt") ? arguments.rc.link_active_bt : false);
 
 		if (val(arguments.rc.link_id)) {
-			request.aryLink.setUpdatedByLink(entityLoadByPK("Link", 1));
+			request.aryLink.setUpdatedByUser(entityLoadByPK("Link", 1));
 			request.aryLink.setLink_update_datetime_dt(now());
 		} else {
-			request.aryLink.setCreatedByLink(entityLoadByPK("Link", 1));
+			request.aryLink.setCreatedByUser(entityLoadByPK("Link", 1));
 			request.aryLink.setLink_create_datetime_dt(now());
 		}
 
@@ -75,12 +81,8 @@ component extends="cborm.models.EventHandler"{
 	function remove(event,rc,prc) {
 		request.aryLink = entityLoadByPK("Link", val(arguments.rc.link_id));
 
-		//entityDelete(request.aryLink);
-		//ORMExecuteQuery("DELETE FROM links WHERE link_id = #val(arguments.rc.link_id)#", true);
-
-		//ormFlush();
-
-		createObject("component", "linkUtilities").removeLink(arguments.rc.link_id);
+		entityDelete(request.aryLink);
+		ormFlush();
 
 		setNextEvent("link.index");
 	}

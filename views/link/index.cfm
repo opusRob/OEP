@@ -9,12 +9,10 @@
 </cfoutput>
 <table class="table table-striped table-hover table_background">
 	<tr>
-		<th>Last Name</th>
-		<th>First Name</th>
-		<th class="visible-lg">Middle Name</th>
-		<th class="hidden-xs">Linkname</th>
-		<th class="hidden-xs">Is Admin</th>
-		<th class="hidden-xs">Active</th>
+		<th>Link Image Icon</th>
+		<th>Link Name</th>
+		<th class="hidden-xs">Link URL</th>
+		<th class="visible-md visible-lg">Active</th>
 		<th class="visible-md visible-lg">Last Updated</th>
 		<th class="visible-lg">Created</th>
 		<th style="text-align: right; ">
@@ -33,27 +31,43 @@
 				<cfset variables.intRowCount++/>
 				<tr>
 					<td>
-						<!--- <a href="#event.buildLink('link.link.#variables.objLink.getLink_id()#')#"> --->
-							#len(trim(variables.objLink.getLink_name_tx())) ? variables.objLink.getLink_name_tx() : "&nbsp;"#
-						<!--- </a> --->
+						<cfif len(trim(variables.objLink.getLink_url_tx()))>
+							<a href="#variables.objLink.getLink_url_tx()#" target="_blank">
+						</cfif>
+						<cfif
+							len(trim(variables.objLink.getLink_image_file_name_tx()))
+							AND fileExists(expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & variables.objLink.getLink_image_file_name_tx()))
+							AND isImageFile(expandPath(application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & variables.objLink.getLink_image_file_name_tx()))
+						>
+							<img
+								src="#application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & variables.objLink.getLink_image_file_name_tx()#"
+								alt="#variables.objLink.getLink_name_tx()# Link Icon Image"
+								style="width: 64px; height: 64px; float: left; border: solid 1px ##cccccc; "
+							/>
+						<cfelse>
+							<img
+								src="#application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation#_no_link_image_available.png"
+								alt="#variables.objLink.getLink_name_tx()# Link Icon Image Placeholder"
+								style="width: 64px; height: 64px; float: left; border: solid 1px ##cccccc; "
+							/>
+						</cfif>
+						<cfif len(trim(variables.objLink.getLink_url_tx()))>
+							</a>
+						</cfif>
 					</td>
 					<td>
-						<!--- <a href="#event.buildLink('link.link.#variables.objLink.getLink_id()#')#"> --->
-							#len(trim(variables.objLink.getLink_url_tx())) ? variables.objLink.getLink_url_tx() : "&nbsp;"#
-						<!--- </a> --->
-					</td>
-					<td class="visible-lg">
-						<!--- <a href="#event.buildLink('link.link.#variables.objLink.getLink_id()#')#"> --->
-							#len(trim(variables.objLink.getLink_image_file_name_tx())) ? variables.objLink.getLink_image_file_name_tx() : "&nbsp;"#
-						<!--- </a> --->
+						#len(trim(variables.objLink.getLink_name_tx())) ? variables.objLink.getLink_name_tx() : "&nbsp;"#
 					</td>
 					<td class="hidden-xs">
-						<!--- <a href="#event.buildLink('link.link.#variables.objLink.getLink_id()#')#"> --->
-							#len(trim(variables.objLink.getLink_google_linkname_tx())) ? variables.objLink.getLink_google_linkname_tx() : "&nbsp;"#
-						<!--- </a> --->
+						<cfif len(trim(variables.objLink.getLink_url_tx()))>
+							<a href="#variables.objLink.getLink_url_tx()#" target="_blank">
+								#variables.objLink.getLink_url_tx()#
+							</a>
+						<cfelse>
+							&nbsp;
+						</cfif>
 					</td>
-					<td class="hidden-xs">#yesNoFormat(variables.objLink.getLink_is_admin_bt())#</td>
-					<td class="hidden-xs">#yesNoFormat(variables.objLink.getLink_active_bt())#</td>
+					<td class="visible-md visible-lg">#yesNoFormat(variables.objLink.getLink_active_bt())#</td>
 					<td class="visible-md visible-lg">#isDate(variables.objLink.getLink_update_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objLink.getLink_create_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td style="text-align: right; ">

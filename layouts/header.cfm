@@ -130,5 +130,37 @@
 				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/>
 			</div>
 		</div>
+	<cfelseif request.cb_requestContext.getCurrentHandler() IS "link">
+		<div class="jumbotron" style="margin-bottom: 0px; ">
+			<div class="container" style="text-align: center; ">
+				<h2
+					class="visible-lg-inline visible-md-inline visible-sm-inline"
+					style="display: inline; float: left; margin: 0px; "
+				>
+					<cfif request.cb_requestContext.getCurrentAction() IS "add">
+						<!--- Link: --->Add Link
+					<cfelseif request.cb_requestContext.getCurrentAction() IS "edit">
+						<!--- Link: --->Edit Link
+					<cfelse>
+						Links
+					</cfif>
+				</h2>
+				<h2
+					class="visible-xs-inline"
+					style="display: inline; float: left; margin: 0px; font-size: large; "
+				>
+					<cfif request.cb_requestContext.getCurrentAction() IS "add">
+						<!--- Link: --->Add Link
+					<cfelseif request.cb_requestContext.getCurrentAction() IS "edit">
+						<!--- Link: --->Edit Link
+					<cfelse>
+						Links
+					</cfif>
+				</h2>
+				<img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
+				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
+				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/>
+			</div>
+		</div>
 	</cfif>
 </header>
