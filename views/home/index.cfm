@@ -14,6 +14,11 @@
 							<h3 class="panel-title" style="float: left; ">
 								<a href="##">Container #variables.i#</a>
 							</h3>
+							<cfif request.bolAdminMode>
+								<button type="button" class="btn btn-success" style="float: right; margin: 0px 5px; " aria-label="Edit">
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+								</button>
+							</cfif>
 						</div>
 
 						<table class="table page_section table-hover">
@@ -32,6 +37,16 @@
 											</div>
 										</a>
 									</td>
+									<cfif request.bolAdminMode>
+										<td style="white-space: nowrap; text-align: right; width: 75px; ">
+											<button type="button" class="btn btn-warning" aria-label="Edit">
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											</button>
+											<button type="button" class="btn btn-danger" aria-label="Delete">
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+											</button>
+										</td>
+									</cfif>
 								</tr>
 							</cfloop>
 						</table>
@@ -48,6 +63,11 @@
 					<h3 class="panel-title" style="float: left; ">
 						<a href="##">Links</a>
 					</h3>
+					<cfif request.bolAdminMode>
+						<button type="button" class="btn btn-success" style="float: right; margin: 0px 5px; " aria-label="Edit">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+					</cfif>
 				</div>
 				<div class="panel-body">
 					<cfloop from="1" to="10" index="variables.i">
