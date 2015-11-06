@@ -12,7 +12,7 @@
 // }
 
 $(document).ready(
-	function() {;;
+	function() {
 		gapi.signin2.render(
 			"google_signin"
 			, {
@@ -22,22 +22,27 @@ $(document).ready(
 				, "longtitle": true
 				, "theme": "dark"
 				, "onsuccess": onSignIn
-				, "onfailure": onSignOut
+				, "onfailure": onFailure
 			}
 		);
 	}
 );
 
 function onSignIn(googleUser) {
-	var profile = googleUser.getBasicProfile();
-	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-	console.log('Name: ' + profile.getName());
-	console.log('Image URL: ' + profile.getImageUrl());
-	console.log('Email: ' + profile.getEmail());
+	$("#id_token").val(googleUser.getAuthResponse().id_token);
+	//$("#auth_form").submit();
+	$("#btn_login").prop("disabled", false);
+	
+	// var profile = googleUser.getBasicProfile();
+	// console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	// console.log('Name: ' + profile.getName());
+	// console.log('Image URL: ' + profile.getImageUrl());
+	// console.log('Email: ' + profile.getEmail());
 }
 
-function onSignOut() {
-	console.log("Google sign-in failure.");
+function onFailure() {
+	//console.log("Google sign-in failure.");
+	$("#btn_login").prop("disabled", true);
 }
 
 function signOut() {

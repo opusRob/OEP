@@ -60,6 +60,7 @@ component{
 	public boolean function onApplicationStart(){
 		application.cbBootstrap = new coldbox.system.Bootstrap( COLDBOX_CONFIG_FILE, COLDBOX_APP_ROOT_PATH, COLDBOX_APP_KEY, COLDBOX_APP_MAPPING );
 		application.cbBootstrap.loadColdbox();
+
 		if (fileExists(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json")))
 			application.stcApplicationCustomSettings = deserializeJSON(fileRead(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json")));
 		else
@@ -72,14 +73,30 @@ component{
 	public boolean function onRequestStart(String targetPage){
 		// Process ColdBox Request
 
-		request.bolAdminMode = false;
+		param name="session.bolUserIsLoggedIn" default = false;
+		param name="session.bolUserIsAdmin" default = false;
+
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
+
+		if (
+			request.cb_requestContext.getCurrentHandler() NEQ "login"
+			AND NOT (
+				structKeyExists(session, "bolUserIsLoggedIn")
+				AND isBoolean(session.bolUserIsLoggedIn)
+				AND session.bolUserIsLoggedIn
+			)
+		) {
+			this.onSessionEnd(session, application);
+			structClear(session);
+			location("#COLDBOX_APP_ROOT_PATH#/login.index", false);
+
+		}
 
 		if (structKeyExists(url, "dbinit")) {
 			writeOutput("<h2>Prepare to ormReload()...</h2>");
 			ormReload();
 			writeOutput("<h2>...ormReload() done.</h2>");
-			if (structKeyExists(application.stcApplicationCustomSettings, "strInitialAppDataFolderLocation")) {
+			if (url.dbinit IS "dropCreate" AND structKeyExists(application.stcApplicationCustomSettings, "strInitialAppDataFolderLocation")) {
 				writeOutput("<h2>Prepare to create initial data...</h1>");
 				createObject("component", "config.CreateInitialData").createInitialData(
 					application.stcApplicationCustomSettings.strInitialAppDataFolderLocation

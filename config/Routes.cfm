@@ -22,6 +22,8 @@
 	addRoute(pattern=":handler/:action?");
 
 	addRoute(pattern = "login", handler = "login", action = "index");
+	addRoute(pattern = "login", handler = "authenticate", action = "authenticate");
+
 	addRoute(pattern = "home", handler = "home", action = "index");
 
 	addRoute(pattern = "user/:action?", handler = "user", action = "index");
