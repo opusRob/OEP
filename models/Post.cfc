@@ -23,6 +23,11 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 		// Example: age = { required=true, min="18", type="int" }
 	};
 
+	// Custom functions:
+	function getPostUpdateCreateDateTime() {
+		return isDate(this.getPost_update_datetime_dt()) ? this.getPost_update_datetime_dt() : this.getPost_create_datetime_dt();
+	}
+
 	// Constructor
 	function init(){
 		super.init( useQueryCaching="false" );

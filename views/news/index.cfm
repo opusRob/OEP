@@ -40,7 +40,7 @@
 					</td>
 					<td class="visible-md visible-lg">#isDate(variables.objPost.getPost_update_datetime_dt()) ? dateTimeFormat(variables.objPost.getPost_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objPost.getPost_create_datetime_dt()) ? dateTimeFormat(variables.objPost.getPost_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td style="text-align: right; ">
+					<td style="text-align: right; white-space: nowrap; ">
 						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('news.edit.#variables.objPost.getPost_id()#')#'; ">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</button>

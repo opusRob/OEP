@@ -18,6 +18,11 @@ component persistent="true" table="links" extends="cborm.models.ActiveEntity" {
 		// Example: age = { required=true, min="18", type="int" }
 	};
 
+	// Custom functions:
+	function getImageSrcAttr() {
+		return application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation & this.getLink_image_file_name_tx()
+	}
+
 	// Constructor
 	function init(){
 		super.init( useQueryCaching="false" );

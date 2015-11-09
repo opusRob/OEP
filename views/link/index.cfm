@@ -70,7 +70,7 @@
 					<td class="visible-md visible-lg">#yesNoFormat(variables.objLink.getLink_active_bt())#</td>
 					<td class="visible-md visible-lg">#isDate(variables.objLink.getLink_update_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objLink.getLink_create_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td style="text-align: right; ">
+					<td style="text-align: right; white-space: nowrap; ">
 						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('link.edit.#variables.objLink.getLink_id()#')#'; ">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</button>

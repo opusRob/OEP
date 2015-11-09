@@ -56,7 +56,7 @@
 					<td class="hidden-xs">#yesNoFormat(variables.objUser.getUser_active_bt())#</td>
 					<td class="visible-md visible-lg">#isDate(variables.objUser.getUser_update_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objUser.getUser_create_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td style="text-align: right; ">
+					<td style="text-align: right; white-space: nowrap; ">
 						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#'; ">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</button>
