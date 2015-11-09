@@ -1,57 +1,67 @@
-<br />
 <cfoutput>
-	<!--- <div class="paginator_div">
-		#renderPaginator(
-			total_records = request.intUserCount
-			, page = url.page
-		)#
-	</div> --->
-</cfoutput>
-<table class="table table-striped table-hover table_background">
-	<tr>
-		<th>Headline</th>
-		<th class="visible-lg">Preview</th>
-		<th class="visible-md visible-lg">Last Updated</th>
-		<th class="visible-lg">Created</th>
-		<th style="text-align: right; ">
-			<cfoutput>
-				<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('news.add')#'; ">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button>
-			</cfoutput>
-		</th>
-	</tr>
-	<cfoutput>
-		<form method="post" name="post_form" id="post_form" action="#event.buildLink('news.remove')#">
-			<input type="hidden" name="post_id" id="post_id" value="" maxlength="50"/>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>News</h1>
+                        <hr class="small">
+                        <span class="subheading">
+							Opus Group, LLC Internal News
+							&nbsp;&nbsp;
+							<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('news.add')#'; ">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</button>
+						</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+	<div class="row">
+		<div class="<!--- col-lg-8 ---> col-lg-offset-2 <!--- col-md-10  --->col-md-offset-1">
 			<cfset variables.intRowCount = 0/>
 			<cfloop array="#request.aryPosts#" index="variables.objPost">
 				<cfset variables.intRowCount++/>
-				<tr>
-					<td>
-						<a href="#event.buildLink('news.item.#variables.objPost.getPost_id()#')#">
+				<div class="post-preview">
+					<a href="#event.buildLink('blog.item.#variables.objPost.getPost_id()#')#">
+						<h2 class="post-title">
 							#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
-						</a>
-					</td>
-					<td class="visible-lg">
-						<a href="#event.buildLink('news.item.#variables.objPost.getPost_id()#')#">
+						</h2>
+						<h3 class="post-subtitle">
 							#len(trim(variables.objPost.getPost_preview_tx())) ? variables.objPost.getPost_preview_tx() : "&nbsp;"#
-						</a>
-					</td>
-					<td class="visible-md visible-lg">#isDate(variables.objPost.getPost_update_datetime_dt()) ? dateTimeFormat(variables.objPost.getPost_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td class="visible-lg">#isDate(variables.objPost.getPost_create_datetime_dt()) ? dateTimeFormat(variables.objPost.getPost_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td style="text-align: right; white-space: nowrap; ">
-						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('news.edit.#variables.objPost.getPost_id()#')#'; ">
-							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</button>
-						<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						</button>
-					</td>
-				</tr>
+						</h3>
+					</a>
+					<p class="post-meta">
+						<cfif isDate(variables.objPost.getPost_update_datetime_dt())>
+							Updated by
+							<a href="##">#variables.objPost.getUpdatedByUser().getUser_full_name_tx()#</a>
+							on #dateFormat(variables.objPost.getPost_update_datetime_dt(), "dddd mmmm d, yyyy")#
+							at #timeFormat(variables.objPost.getPost_update_datetime_dt(), "h:mm TT")#
+						<cfelse>
+							Posted by
+							<a href="##">#variables.objPost.getCreatedByUser().getUser_full_name_tx()#</a>
+							on #dateFormat(variables.objPost.getPost_create_datetime_dt(), "dddd mmmm d, yyyy")#
+							at #timeFormat(variables.objPost.getPost_create_datetime_dt(), "h:mm TT")#
+						</cfif>
+						<div style="">
+							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('blog.edit.#variables.objPost.getPost_id()#')#'; ">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
+						</div>
+					</p>
+				</div>
+				<cfif variables.intRowCount LT arrayLen(request.aryPosts)>
+					<hr/>
+				</cfif>
 			</cfloop>
-		</form>
-	</cfoutput>
-</table>
-
-
+		</div>
+	</div>
+</cfoutput>

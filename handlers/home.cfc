@@ -32,12 +32,12 @@ component{
 	function index(event,rc,prc){
 
 		request.aryPostType = entityLoad("PostType", {post_type_code_tx = "news"}, true);
-		request.aryNews = entityLoad("Post", {PostType = request.aryPostType}, {maxResults = 5});
+		request.aryNews = entityLoad("Post", {PostType = request.aryPostType}, "post_update_create_datetime_dt DESC", {maxResults = 5});
 
 		request.aryPostType = entityLoad("PostType", {post_type_code_tx = "blog"}, true);
-		request.aryBlog = entityLoad("Post", {PostType = request.aryPostType}, {maxResults = 5});
+		request.aryBlog = entityLoad("Post", {PostType = request.aryPostType}, "post_update_create_datetime_dt DESC", {maxResults = 5});
 
-		request.aryLinks = entityLoad("Link", {}, {maxResults = 20});
+		request.aryLinks = entityLoad("Link", {}, "link_update_create_datetime_dt DESC", {maxResults = 20});
 
 
 		event.setView("home/index");

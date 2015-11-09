@@ -1,8 +1,59 @@
 body {
 	padding-bottom: 70px;
-	background: #d5e9ea; 
+	/*background: #d5e9ea; */
 	/*position: relative; */
+	
+	/*-- This is from bootstrap.css, because clean-boostrap.css was overriding it. --*/
+	    color: #333;
+	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	    font-size: 14px;
+	    line-height: 1.42857;
+	
 }
+
+/*-- Overriding Clean-blog.css settings: --*/
+	footer {
+		padding: 0px; 
+	}
+	.btn {
+	    border: 1px solid transparent;
+	    border-radius: 4px;
+	    font-size: 14px;
+	    font-weight: 400;
+	    line-height: 1.42857;
+	    padding: 6px 12px;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700; 
+	}
+	div.post-preview {
+		padding: 0px; 
+	}
+	div.post-preview a {
+		/* color: #052880;*/  /*Opus mid blue */
+		color: #00619b; 
+	}
+	.intro-header {
+		background: #41568d; 
+		/*height: 400px; */
+		margin-bottom: 15px; 
+	}
+	.intro-header .site-heading, .intro-header .post-heading, .intro-header .page-heading {
+		padding: 25px 0px; 
+	}
+	.intro-header .site-heading h1 {
+		font-size: 58px; 
+	}
+	.intro-header .post-heading .subheading {
+		margin: 0px 0px 20px 0px; 
+	}
+	.intro-header .post-heading .meta {
+	    /*color: #333;*/
+	    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	    font-size: 14px;
+	    line-height: 1.42857;
+	}
+
 nav.navbar {
 	border-radius: 0px;
 	border-width: 0px 0px 0px 0px;

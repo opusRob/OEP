@@ -5,7 +5,7 @@ component extends="cborm.models.EventHandler"{
 	function index(event,rc,prc){
 		param url.page default = 1;
 
-		request.aryUsers = entityLoad("User");
+		request.aryUsers = entityLoad("User", "user_update_create_datetime_dt DESC");
 		//request.intUserCount = arrayLen(request.aryUsers);
 		/*request.aryUsers = entityLoad(
 			//name = "User"

@@ -11,6 +11,9 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 	property name="post_preview_tx" ormtype="string" length=500;
 	property name="post_body_tx" ormtype="string" length=4000;	//property name="post_create_user_id" ormtype="int" notNull=true;	//property name="post_update_user_id" ormtype="int";	property name="post_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="post_update_datetime_dt" ormtype="timestamp";
 
+	// Calculated
+	property name="post_update_create_datetime_dt" type="timestamp" formula="SELECT COALESCE(post_update_datetime_dt, post_create_datetime_dt)";
+
 	// Relationships
 	property name="Tags" fieldType="many-to-many" fkColumn="posts_tags_xref_post_id" cfc="Tag" linkTable="posts_tags_xref" inverseJoinColumn="posts_tags_xref_tag_id";
 	property name="Comments" fieldType="one-to-many" fkColumn="post_id" cfc="Comment";
@@ -24,9 +27,6 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 	};
 
 	// Custom functions:
-	function getPostUpdateCreateDateTime() {
-		return isDate(this.getPost_update_datetime_dt()) ? this.getPost_update_datetime_dt() : this.getPost_create_datetime_dt();
-	}
 
 	// Constructor
 	function init(){

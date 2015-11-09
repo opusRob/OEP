@@ -8,7 +8,7 @@ component extends="cborm.models.EventHandler"{
 		//dump(var = request.cb_requestContext, expand = false);
 
 		request.aryPostType = entityLoad("PostType", {post_type_code_tx = "news"}, true);
-		request.aryPosts = entityLoad("Post", {PostType = request.aryPostType});
+		request.aryPosts = entityLoad("Post", {PostType = request.aryPostType}, "post_update_create_datetime_dt DESC");
 
 		event.setView("news/index");
 	}

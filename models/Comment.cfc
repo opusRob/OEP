@@ -9,6 +9,9 @@ component persistent="true" table="comments" extends="cborm.models.ActiveEntity"
 	// Properties
 	//property name="comment_post_id" ormtype="int" notNull=true;	property name="comment_body_tx" ormtype="string" length=1000;	//property name="comment_create_user_id" ormtype="int" notNull=true;	//property name="comment_update_user_id" ormtype="int";	property name="comment_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="comment_update_datetime_dt" ormtype="timestamp";
 
+	// Calculated
+	property name="comment_update_create_datetime_dt" type="timestamp" formula="SELECT COALESCE(comment_update_datetime_dt, comment_create_datetime_dt)";
+
 	// Relationships
 	property name="Post" fieldType="many-to-one" fkColumn="comment_post_id" cfc="Post";
 	property name="CreatedByUser" fieldType="many-to-one" fkColumn="comment_create_user_id" cfc="User";

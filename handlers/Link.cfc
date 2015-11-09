@@ -5,7 +5,7 @@ component extends="cborm.models.EventHandler"{
 	function index(event,rc,prc){
 		param url.page default = 1;
 
-		request.aryLinks = entityLoad("Link");
+		request.aryLinks = entityLoad("Link", {}, "link_update_create_datetime_dt DESC");
 
 		event.setView("link/index");
 	}

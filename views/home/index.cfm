@@ -5,10 +5,47 @@
 	<div class="row">
 		<cfloop list="News,Blog" index="variables.strPostType">
 			<div class="col-sm-6">
+				<div class="<!--- col-lg-8 ---> col-lg-offset-2 <!--- col-md-10 ---> col-md-offset-1">
+					<cfset variables.intRowCount = 0/>
+					<cfloop array="#request['ary' & variables.strPostType]#" index="variables.objPost">
+						<cfset variables.intRowCount++/>
+						<div class="post-preview">
+							<a href="#event.buildLink('blog.item.#variables.objPost.getPost_id()#')#">
+								<h2 class="post-title">
+									#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
+								</h2>
+								<h3 class="post-subtitle">
+									#len(trim(variables.objPost.getPost_preview_tx())) ? variables.objPost.getPost_preview_tx() : "&nbsp;"#
+								</h3>
+							</a>
+							<p class="post-meta">
+								<cfif isDate(variables.objPost.getPost_update_datetime_dt())>
+									Updated by
+									<a href="##">#variables.objPost.getUpdatedByUser().getUser_full_name_tx()#</a>
+									on #dateFormat(variables.objPost.getPost_update_datetime_dt(), "dddd mmmm d, yyyy")#
+									at #timeFormat(variables.objPost.getPost_update_datetime_dt(), "h:mm TT")#
+								<cfelse>
+									Posted by
+									<a href="##">#variables.objPost.getCreatedByUser().getUser_full_name_tx()#</a>
+									on #dateFormat(variables.objPost.getPost_create_datetime_dt(), "dddd mmmm d, yyyy")#
+									at #timeFormat(variables.objPost.getPost_create_datetime_dt(), "h:mm TT")#
+								</cfif>
+							</p>
+						</div>
+						<cfif variables.intRowCount LT arrayLen(request['ary' & variables.strPostType])>
+							<hr/>
+						</cfif>
+					</cfloop>
+				</div>
+			</div>
+		</cfloop>
+
+		<!--- <cfloop list="News,Blog" index="variables.strPostType">
+			<div class="col-sm-6">
 				<div class="panel panel-default">
 					<div class="panel-heading" style="height: 45px; ">
 						<h3 class="panel-title" style="float: left; ">
-							<a href="#event.buildLink('news.index')#">#variables.strPostType#</a>
+							<a href="#event.buildLink(lCase(variables.strPostType) & '.index')#">#variables.strPostType#</a>
 						</h3>
 					</div>
 
@@ -16,10 +53,10 @@
 						<cfloop array="#request['ary' & variables.strPostType]#" index="variables.obj#variables.strPostType#">
 							<tr>
 								<td style="width: 80px; ">
-									<cfif isDate(variables["obj" & variables.strPostType].getPostUpdateCreateDateTime())>
-										#dateFormat(variables["obj" & variables.strPostType].getPostUpdateCreateDateTime(), "mm/dd/yyyy")#
+									<cfif isDate(variables["obj" & variables.strPostType].getPost_update_create_datetime_dt())>
+										#dateFormat(variables["obj" & variables.strPostType].getPost_update_create_datetime_dt(), "mm/dd/yyyy")#
 										<br/>
-										#timeFormat(variables["obj" & variables.strPostType].getPostUpdateCreateDateTime(), "hh:mm TT")#
+										#timeFormat(variables["obj" & variables.strPostType].getPost_update_create_datetime_dt(), "h:mm TT")#
 									<cfelse>
 										&nbsp;
 									</cfif>
@@ -37,7 +74,7 @@
 					</table>
 				</div>
 			</div>
-		</cfloop>
+		</cfloop> --->
 	</div>
 
 	<div class="row_spacer"></div>
@@ -62,7 +99,7 @@
 									<td>
 										#dateFormat(now(), "mm/dd/yyyy")#
 										<br/>
-										#timeFormat(now(), "hh:mm TT")#
+										#timeFormat(now(), "h:mm TT")#
 									</td>
 									<td>
 										<a href="javascript: void(0); " class="panel_link">
