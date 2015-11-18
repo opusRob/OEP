@@ -1,6 +1,6 @@
 <cfoutput>
 
-    <!-- Page Header -->
+  <!---   <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
         <div class="container">
@@ -22,10 +22,10 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> --->
 
 	<div class="row">
-		<div class="<!--- col-lg-8 ---> col-lg-offset-2 <!--- col-md-10  --->col-md-offset-1">
+		<div class="<!--- col-lg-8 ---> <!--- col-lg-offset-1 ---> <!--- col-md-10  ---><!--- col-md-offset-1 --->" style="padding-left: 20px; ">
 			<cfset variables.intRowCount = 0/>
 			<cfloop array="#request.aryPosts#" index="variables.objPost">
 				<cfset variables.intRowCount++/>

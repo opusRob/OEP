@@ -19,11 +19,12 @@
 		<th class="visible-lg">Created</th>
 		<cfif isUserInRole("administrator")>
 			<th style="text-align: right; ">
-				<cfoutput>
+				<!--- <cfoutput>
 					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('user.add')#'; ">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
-				</cfoutput>
+				</cfoutput> --->
+				&nbsp;
 			</th>
 		</cfif>
 	</tr>

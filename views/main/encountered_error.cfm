@@ -1,4 +1,5 @@
-<div class="alert alert-danger" role="alert">
+
+<div class="alert alert-danger" role="alert" style="margin-top: 25px; ">
 	The application has encountered an error.
 </div>
 

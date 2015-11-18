@@ -1,7 +1,7 @@
 <br />
 <cfoutput>
 
-    <!-- Page Header -->
+   <!---  <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
         <div class="container">
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> --->
 
 	<!--- <div class="paginator_div">
 		#renderPaginator(

@@ -39,9 +39,9 @@
 	<cfelseif request.cb_requestContext.getCurrentHandler() IS "user">
 		<div class="jumbotron" style="margin-bottom: 0px; ">
 			<div class="container" style="text-align: center; ">
-				<h2
+				<h1
 					class="visible-lg-inline visible-md-inline visible-sm-inline"
-					style="display: inline; float: left; margin: 0px; "
+					style="display: inline; float: left; margin: 0px; font-size: 40px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- Users: --->Add User
@@ -50,10 +50,10 @@
 					<cfelse>
 						Users
 					</cfif>
-				</h2>
-				<h2
+				</h1>
+				<h1
 					class="visible-xs-inline"
-					style="display: inline; float: left; margin: 0px; font-size: large; "
+					style="display: inline; float: left; margin: 0px; font-size: 25px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- Users: --->Add User
@@ -62,18 +62,23 @@
 					<cfelse>
 						Users
 					</cfif>
-				</h2>
-				<img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
+				</h1>
+				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
+					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('user.add')#'; ">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</cfif>
+				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
-				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/>
+				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/> --->
 			</div>
 		</div>
 	<cfelseif request.cb_requestContext.getCurrentHandler() IS "news">
 		<div class="jumbotron" style="margin-bottom: 0px; ">
 			<div class="container" style="text-align: center; ">
-				<h2
+				<h1
 					class="visible-lg-inline visible-md-inline visible-sm-inline"
-					style="display: inline; float: left; margin: 0px; "
+					style="display: inline; float: left; margin: 0px; font-size: 40px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- News: --->Add News
@@ -82,10 +87,10 @@
 					<cfelse>
 						News
 					</cfif>
-				</h2>
-				<h2
+				</h1>
+				<h1
 					class="visible-xs-inline"
-					style="display: inline; float: left; margin: 0px; font-size: large; "
+					style="display: inline; float: left; margin: 0px; font-size: 25px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- News: --->Add News
@@ -94,18 +99,23 @@
 					<cfelse>
 						News
 					</cfif>
-				</h2>
-				<img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
+				</h1>
+				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
+					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('news.add')#'; ">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</cfif>
+				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
-				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/>
+				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/> --->
 			</div>
 		</div>
 	<cfelseif request.cb_requestContext.getCurrentHandler() IS "blog">
 		<div class="jumbotron" style="margin-bottom: 0px; ">
 			<div class="container" style="text-align: center; ">
-				<h2
+				<h1
 					class="visible-lg-inline visible-md-inline visible-sm-inline"
-					style="display: inline; float: left; margin: 0px; "
+					style="display: inline; float: left; margin: 0px; font-size: 40px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- Blog: --->Add Blog
@@ -114,10 +124,10 @@
 					<cfelse>
 						Blog
 					</cfif>
-				</h2>
-				<h2
+				</h1>
+				<h1
 					class="visible-xs-inline"
-					style="display: inline; float: left; margin: 0px; font-size: large; "
+					style="display: inline; float: left; margin: 0px; font-size: 25px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- Blog: --->Add Blog
@@ -126,18 +136,23 @@
 					<cfelse>
 						Blog
 					</cfif>
-				</h2>
-				<img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
+				</h1>
+				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
+					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('blog.add')#'; ">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</cfif>
+				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
-				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/>
+				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/> --->
 			</div>
 		</div>
 	<cfelseif request.cb_requestContext.getCurrentHandler() IS "link">
 		<div class="jumbotron" style="margin-bottom: 0px; ">
 			<div class="container" style="text-align: center; ">
-				<h2
+				<h1
 					class="visible-lg-inline visible-md-inline visible-sm-inline"
-					style="display: inline; float: left; margin: 0px; "
+					style="display: inline; float: left; margin: 0px; font-size: 40px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- Link: --->Add Link
@@ -146,10 +161,10 @@
 					<cfelse>
 						Links
 					</cfif>
-				</h2>
-				<h2
+				</h1>
+				<h1
 					class="visible-xs-inline"
-					style="display: inline; float: left; margin: 0px; font-size: large; "
+					style="display: inline; float: left; margin: 0px; font-size: 25px; "
 				>
 					<cfif request.cb_requestContext.getCurrentAction() IS "add">
 						<!--- Link: --->Add Link
@@ -158,10 +173,15 @@
 					<cfelse>
 						Links
 					</cfif>
-				</h2>
-				<img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
+				</h1>
+				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
+					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('link.add')#'; ">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</cfif>
+				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
-				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/>
+				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/> --->
 			</div>
 		</div>
 	</cfif>

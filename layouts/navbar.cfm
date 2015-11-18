@@ -25,7 +25,7 @@
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'news' ? 'active' : ''#"><a href="#event.buildLink('news.index')#">News</a></li>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'blog' ? 'active' : ''#"><a href="#event.buildLink('blog.index')#">Blog</a></li>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'link' ? 'active' : ''#"><a href="#event.buildLink('link.index')#">Links</a></li>
-				<cfif session.bolUserIsAdmin>
+				<cfif isUserInRole("administrator")>
 		        	<li class="#request.cb_requestContext.getCurrentHandler() EQ 'user' ? 'active' : ''#"><a href="#event.buildLink('user.index')#">Users</a></li>
 				</cfif>
 		        <li class="dropdown">
