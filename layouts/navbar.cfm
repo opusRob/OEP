@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-bottom" style="background: #021139; ">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: #021139; ">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
