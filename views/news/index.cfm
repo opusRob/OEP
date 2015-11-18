@@ -12,9 +12,11 @@
                         <span class="subheading">
 							Opus Group, LLC Internal News
 							&nbsp;&nbsp;
-							<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('news.add')#'; ">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-							</button>
+							<cfif isUserInRole("administrator")>
+								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('news.add')#'; ">
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+								</button>
+							</cfif>
 						</span>
                     </div>
                 </div>
@@ -28,7 +30,7 @@
 			<cfloop array="#request.aryPosts#" index="variables.objPost">
 				<cfset variables.intRowCount++/>
 				<div class="post-preview">
-					<a href="#event.buildLink('blog.item.#variables.objPost.getPost_id()#')#">
+					<a href="#event.buildLink('news.item.#variables.objPost.getPost_id()#')#">
 						<h2 class="post-title">
 							#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 						</h2>
@@ -48,14 +50,16 @@
 							on #dateFormat(variables.objPost.getPost_create_datetime_dt(), "dddd mmmm d, yyyy")#
 							at #timeFormat(variables.objPost.getPost_create_datetime_dt(), "h:mm TT")#
 						</cfif>
-						<div style="">
-							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('blog.edit.#variables.objPost.getPost_id()#')#'; ">
-								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							</button>
-							<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
-								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							</button>
-						</div>
+						<cfif isUserInRole("administrator")>
+							<div style="">
+								<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('news.edit.#variables.objPost.getPost_id()#')#'; ">
+									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
+							</div>
+						</cfif>
 					</p>
 				</div>
 				<cfif variables.intRowCount LT arrayLen(request.aryPosts)>

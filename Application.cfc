@@ -9,6 +9,7 @@ component{
 	this.name = hash( getCurrentTemplatePath() );
 	this.sessionManagement = true;
 	this.sessionTimeout = createTimeSpan(0,0,30,0);
+	this.loginStorage = "Session";
 	this.setClientCookies = true;
 
 	// COLDBOX STATIC PROPERTY, DO NOT CHANGE UNLESS THIS IS NOT THE ROOT OF YOUR COLDBOX APP
@@ -61,27 +62,50 @@ component{
 		application.cbBootstrap = new coldbox.system.Bootstrap( COLDBOX_CONFIG_FILE, COLDBOX_APP_ROOT_PATH, COLDBOX_APP_KEY, COLDBOX_APP_MAPPING );
 		application.cbBootstrap.loadColdbox();
 
-		if (fileExists(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json")))
+		if (fileExists(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json"))) {
 			application.stcApplicationCustomSettings = deserializeJSON(fileRead(expandPath(COLDBOX_APP_ROOT_PATH & "applicationCustomSettings.json")));
-		else
+			structAppend(
+				application.stcApplicationCustomSettings
+				, deserializeJSON(fileRead(expandPath(application.stcApplicationCustomSettings.strInitialAppDataFolderLocation & "additionalApplicationCustomSettings.json")))
+			);
+		} else {
 			application.stcApplicationCustomSettings = structNew();
-
+		}
 		return true;
 	}
 
 	// request start
 	public boolean function onRequestStart(String targetPage){
 		// Process ColdBox Request
+		createObject("component", "handlers.AuthenticationUtilities").header(
+			stcAttributes = {
+				name = "Expires"
+				, value = GetHttpTimeString(Now())
+			}
+		);
 
 		param name="session.bolUserIsLoggedIn" default = false;
 		param name="session.bolUserIsAdmin" default = false;
 
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
+		//dump(var = request, label = "request"); abort;
 
-		if (
+			/*writeoutput(request.cb_requestContext.getCurrentHandler());
+			writeoutput(request.cb_requestContext.getCurrentAction());
+			abort;*/
+
+		/*createObject("component", "handlers.login").securityCheck(
+			request.cb_requestContext.getCurrentHandler()
+			, request.cb_requestContext.getCurrentAction()
+		);*/
+
+		/*if (
 			request.cb_requestContext.getCurrentHandler() NEQ "login"
+			AND structKeyExists(session, "stcGoogleUserProperties")
+			AND structKeyExists(session.stcGoogleUserProperties, "id_token")
 			AND NOT (
-				structKeyExists(session, "bolUserIsLoggedIn")
+				createObject("component", "handlers.login").authenticate()
+			//	structKeyExists(session, "bolUserIsLoggedIn")
 				AND isBoolean(session.bolUserIsLoggedIn)
 				AND session.bolUserIsLoggedIn
 			)
@@ -90,7 +114,7 @@ component{
 			structClear(session);
 			location("#COLDBOX_APP_ROOT_PATH#/login.index", false);
 
-		}
+		}*/
 
 		if (structKeyExists(url, "dbinit")) {
 			writeOutput("<h2>Prepare to ormReload()...</h2>");

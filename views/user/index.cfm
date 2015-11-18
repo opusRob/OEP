@@ -17,13 +17,15 @@
 		<th class="hidden-xs">Active</th>
 		<th class="visible-md visible-lg">Last Updated</th>
 		<th class="visible-lg">Created</th>
-		<th style="text-align: right; ">
-			<cfoutput>
-				<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('user.add')#'; ">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button>
-			</cfoutput>
-		</th>
+		<cfif isUserInRole("administrator")>
+			<th style="text-align: right; ">
+				<cfoutput>
+					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('user.add')#'; ">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</cfoutput>
+			</th>
+		</cfif>
 	</tr>
 	<cfoutput>
 		<form method="post" name="users_form" id="users_form" action="#event.buildLink('user.remove')#">
@@ -56,14 +58,16 @@
 					<td class="hidden-xs">#yesNoFormat(variables.objUser.getUser_active_bt())#</td>
 					<td class="visible-md visible-lg">#isDate(variables.objUser.getUser_update_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objUser.getUser_create_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td style="text-align: right; white-space: nowrap; ">
-						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#'; ">
-							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</button>
-						<button type="button" class="btn btn-danger btn-xs" onClick="userRemove(#variables.objUser.getUser_id()#)">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						</button>
-					</td>
+					<cfif isUserInRole("administrator")>
+						<td style="text-align: right; white-space: nowrap; ">
+							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#'; ">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-danger btn-xs" onClick="userRemove(#variables.objUser.getUser_id()#)">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
+						</td>
+					</cfif>
 				</tr>
 			</cfloop>
 		</form>

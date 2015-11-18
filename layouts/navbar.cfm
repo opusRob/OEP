@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-bottom" style="background: #021139; ">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -6,19 +6,22 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Opus Group, LLC</a>
+      <a class="navbar-brand" href="#">
+		<!--- Opus Group, LLC --->
+		<img src="/includes/images/opus_logo_medium.png"/>
+	  </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  <cfoutput>
-		<cfif session.bolUserIsLoggedIn>
+		<cfif isUserLoggedIn()>
 	      <ul class="nav navbar-nav">
 	        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'home' ? 'active' : ''#"><a href="#event.buildLink('home.index')#">Home</a></li>
 	      </ul>
 	    </cfif>
 	      <ul class="nav navbar-nav navbar-right">
-			<cfif session.bolUserIsLoggedIn>
+			<cfif isUserLoggedIn()>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'news' ? 'active' : ''#"><a href="#event.buildLink('news.index')#">News</a></li>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'blog' ? 'active' : ''#"><a href="#event.buildLink('blog.index')#">Blog</a></li>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'link' ? 'active' : ''#"><a href="#event.buildLink('link.index')#">Links</a></li>

@@ -27,6 +27,8 @@
 					<cfoutput>
 						<form name="auth_form" id="auth_form" method="post" action="#event.buildLink(linkTo = 'login.authenticate', ssl = false)#">
 							<input type="hidden" name="id_token" id="id_token" value=""/>
+							<input type="hidden" name="access_token" id="access_token" value=""/>
+							<input type="hidden" name="user_google_username_tx" id="user_google_username_tx" value=""/>
 							<input type="submit" name="btn_login" id="btn_login" value="Log Into Application" class="btn btn-lg btn-info" disabled style="width: 250px; margin: 20px 0px 5px 0px; "/>
 						</form>
 					</cfoutput>

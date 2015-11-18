@@ -1,0 +1,19 @@
+
+#google_calendar_div a.list-group-item {
+	border-width: 0px;
+	color: #00619b;  
+}
+#google_calendar_div hr {
+	margin: 1px; 
+}
+#google_calendar_div a.list-group-item h4.list-group-item-heading {
+	margin: 0px 0px 5px 0px; 
+	padding: 0px; 
+	color: #00619b; 
+}
+#google_calendar_div a.list-group-item p.list-group-item-text {
+	margin: 0px; 
+	padding: 0px; 
+	color: #404040;
+	font-style: italic;  
+}

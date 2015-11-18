@@ -30,8 +30,17 @@ $(document).ready(
 
 function onSignIn(googleUser) {
 	$("#id_token").val(googleUser.getAuthResponse().id_token);
-	//$("#auth_form").submit();
-	$("#btn_login").prop("disabled", false);
+	$("#access_token").val(googleUser.getAuthResponse().access_token);
+	$("#user_google_username_tx").val(googleUser.getBasicProfile().getEmail().split("@")[0]);
+	
+	//$("#btn_login").prop("disabled", false);
+	
+	$("#auth_form").submit();
+	$("#btn_login").prop("disabled", true);
+	
+	
+	
+	
 	
 	// var profile = googleUser.getBasicProfile();
 	// console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.

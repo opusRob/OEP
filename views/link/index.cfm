@@ -1,5 +1,30 @@
 <br />
 <cfoutput>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Links</h1>
+                        <hr class="small">
+                        <span class="subheading">
+							Opus Group, LLC Links
+							&nbsp;&nbsp;
+							<cfif isUserInRole("administrator")>
+								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('link.add')#'; ">
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+								</button>
+							</cfif>
+						</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
 	<!--- <div class="paginator_div">
 		#renderPaginator(
 			total_records = request.intLinkCount
@@ -15,13 +40,16 @@
 		<th class="visible-md visible-lg">Active</th>
 		<th class="visible-md visible-lg">Last Updated</th>
 		<th class="visible-lg">Created</th>
-		<th style="text-align: right; ">
-			<cfoutput>
-				<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('link.add')#'; ">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-				</button>
-			</cfoutput>
-		</th>
+		<cfif isUserInRole("administrator")>
+			<th style="text-align: right; ">
+				<!--- <cfoutput>
+					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('link.add')#'; ">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					</button>
+				</cfoutput> --->
+				&nbsp;
+			</th>
+		</cfif>
 	</tr>
 	<cfoutput>
 		<form method="post" name="links_form" id="links_form" action="#event.buildLink('link.remove')#">
@@ -70,14 +98,16 @@
 					<td class="visible-md visible-lg">#yesNoFormat(variables.objLink.getLink_active_bt())#</td>
 					<td class="visible-md visible-lg">#isDate(variables.objLink.getLink_update_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_update_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<td class="visible-lg">#isDate(variables.objLink.getLink_create_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
-					<td style="text-align: right; white-space: nowrap; ">
-						<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('link.edit.#variables.objLink.getLink_id()#')#'; ">
-							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</button>
-						<button type="button" class="btn btn-danger btn-xs" onClick="linkRemove(#variables.objLink.getLink_id()#)">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						</button>
-					</td>
+					<cfif isUserInRole("administrator")>
+						<td style="text-align: right; white-space: nowrap; ">
+							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('link.edit.#variables.objLink.getLink_id()#')#'; ">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-danger btn-xs" onClick="linkRemove(#variables.objLink.getLink_id()#)">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</button>
+						</td>
+					</cfif>
 				</tr>
 			</cfloop>
 		</form>

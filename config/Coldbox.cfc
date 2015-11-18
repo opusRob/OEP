@@ -34,7 +34,7 @@
 			controllerDecorator			= "",
 
 			//Error/Exception Handling
-			exceptionHandler		= "",
+			exceptionHandler		= "main.onException",
 			onInvalidEvent			= "",
 			customErrorTemplate		= "/coldbox/system/includes/BugReport.cfm",
 
@@ -106,9 +106,23 @@
 		//Register interceptors as an array, we need order
 		interceptors = [
 			//SES
-			{class="coldbox.system.interceptors.SES",
-			 properties={}
+			{
+				class = "coldbox.system.interceptors.SES"
+				, properties = {}
+			}, {
+				class = "coldbox.system.interceptors.ApplicationSecurity"
+				, properties = {}
 			}
+			/*, {
+				class = "coldbox.system.interceptors.Security"
+				, name = "ApplicationSecurity"
+				, properties = {
+					rulesSource = "json"
+					, useRegex = true
+					, validatorModel = "SecurityService"
+					, rulesFile = "config/security.json.cfm"
+				}
+			}*/
 		];
 
 		/*
