@@ -1,7 +1,6 @@
-<cfinclude template="../shared/post_add_edit.cfm"/>
 
 <!--- <cfdump var="#request#"> --->
-<!---
+
 <!--- <cfloop list="#structKeyList(request.cb_requestContext)#" index="variables.i">
 	<cfoutput>
 		<cfif left(variables.i, 3) IS "get">
@@ -21,7 +20,7 @@
 <!--- <cfdump var="#request.aryPost#"> --->
 
 <cfoutput>
-	<form method="post" name="post_form" id="post_form" action="#event.buildLink('news.save')#">
+	<form method="post" name="post_form" id="post_form" action="#event.buildLink(request.cb_requestContext.getCurrentHandler() & '.save')#">
 		<input type="hidden" class="form-control" name="post_id" id="post_id" value="#request.aryPost.getPost_id()#"/>
 		<input type="hidden" class="form-control" name="post_post_type_id" id="post_post_type_id" value="#request.aryPostType.getPost_type_id()#"/>
 		<div class="col-sm-12">
@@ -57,4 +56,4 @@
 			</div>
 		</div>
 	</form>
-</cfoutput> --->
+</cfoutput>

@@ -1,0 +1,8 @@
+div.item_header h1 {
+	color: #41568d;
+}
+
+div.item_header div.meta {
+	font-style: italic;
+	color: #666666; 
+}

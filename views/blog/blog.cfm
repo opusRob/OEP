@@ -1,4 +1,6 @@
+<cfinclude template="../shared/post_add_edit.cfm"/>
 
+<!--- 
 <!--- <cfdump var="#request#"> --->
 
 <!--- <cfloop list="#structKeyList(request.cb_requestContext)#" index="variables.i">
@@ -56,4 +58,4 @@
 			</div>
 		</div>
 	</form>
-</cfoutput>
+</cfoutput> --->

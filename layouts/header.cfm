@@ -64,9 +64,11 @@
 					</cfif>
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
-					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('user.add')#'; ">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+					<cfoutput>
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('user.add')#'; ">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+					</cfoutput>
 				</cfif>
 				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
@@ -101,9 +103,11 @@
 					</cfif>
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
-					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('news.add')#'; ">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+					<cfoutput>
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('news.add')#'; ">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+					</cfoutput>
 				</cfif>
 				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
@@ -138,9 +142,11 @@
 					</cfif>
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
-					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('blog.add')#'; ">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+					<cfoutput>
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('blog.add')#'; ">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+					</cfoutput>
 				</cfif>
 				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
@@ -175,9 +181,11 @@
 					</cfif>
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
-					<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('link.add')#'; ">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+					<cfoutput>
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('link.add')#'; ">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+					</cfoutput>
 				</cfif>
 				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
 				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
