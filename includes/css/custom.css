@@ -64,6 +64,7 @@ nav.navbar {
 	/*background: #021139; /*Opus dark blue*/   
 	color: #ffffff;*/ 
 }
+/*----*/
 /*.navbar-default .navbar-nav > li > a {
 	color: #ffffff; 
 }
@@ -78,7 +79,7 @@ nav.navbar .navbar-header a:hover, div.navbar-header .navbar a:active {
 	color: #021139; 
 	background: #edf1fe;
 }*/
-
+/*----*/
 .jumbotron {
 	background: #021139; /* 021139 Opus dark blue*/   
 	color: #ffffff;
