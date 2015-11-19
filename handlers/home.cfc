@@ -39,6 +39,8 @@ component{
 
 		request.aryLinks = entityLoad("Link", {}, "link_update_create_datetime_dt DESC", {maxResults = 20});
 
+		request.cfcUtilities = createObject("component", "includes.cfc.Utilities");
+
 
 		event.setView("home/index");
 	}

@@ -9,7 +9,17 @@
 						#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 					</h2>
 					<h3 class="post-subtitle">
-						#len(trim(variables.objPost.getPost_preview_tx())) ? variables.objPost.getPost_preview_tx() : "&nbsp;"#
+						<!--- #len(trim(variables.objPost.getPost_preview_tx())) ? variables.objPost.getPost_preview_tx() : "&nbsp;"# --->
+						<cfif len(trim(variables.objPost.getPost_body_tx()))>
+							#left(
+								request.cfcUtilities.stripHTML(
+									variables.objPost.getPost_body_tx()
+								)
+								, 200
+							)#
+						<cfelse>
+							&nbsp;
+						</cfif>
 					</h3>
 				</a>
 				<p class="post-meta">

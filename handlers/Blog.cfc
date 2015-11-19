@@ -10,6 +10,8 @@ component extends="cborm.models.EventHandler"{
 		request.aryPostType = entityLoad("PostType", {post_type_code_tx = "blog"}, true);
 		request.aryPosts = entityLoad("Post", {PostType = request.aryPostType}, "post_update_create_datetime_dt DESC");
 
+		request.cfcUtilities = createObject("component", "includes.cfc.Utilities");
+
 		event.setView("blog/index");
 	}
 	function item(event,rc,prc) {
@@ -33,7 +35,6 @@ component extends="cborm.models.EventHandler"{
 			request.aryPost = entityNew("Post");
 
 		request.aryPost.setPost_headline_tx(arguments.rc.post_headline_tx);
-		request.aryPost.setPost_preview_tx(arguments.rc.post_preview_tx);
 		request.aryPost.setPost_body_tx(arguments.rc.post_body_tx);
 		request.aryPost.setPostType(entityLoadByPK("PostType", arguments.rc.post_post_type_id));
 

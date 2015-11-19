@@ -31,12 +31,6 @@
 		</div>
 		<div class="col-sm-12">
 			<div class="form-group">
-				<label for="post_preview_tx" class="control-label">Preview:</label>
-				<textarea class="form-control" name="post_preview_tx" id="post_preview_tx" maxlength="500" style="height: 50px; ">#request.aryPost.getPost_preview_tx()#</textarea>
-			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="form-group">
 				<label for="post_body_tx" class="control-label">Body:</label>
 				<textarea class="form-control" name="post_body_tx" id="post_body_tx" maxlength="4000" style="height: 200px; ">#request.aryPost.getPost_body_tx()#</textarea>
 			</div>
