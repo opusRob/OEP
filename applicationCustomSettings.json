@@ -1,4 +1,6 @@
 {
 	"strInitialAppDataFolderLocation": "C:\\OEP_initial_app_data\\"
 	, "strUploadedLinkImagesFolderLocation": "/includes/images/links/"
+	, "strUploadedNewsImagesFolderLocation": "/includes/images/news/"
+	, "strUploadedBlogImagesFolderLocation": "/includes/images/blog/"
 }

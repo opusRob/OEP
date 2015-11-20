@@ -30,13 +30,11 @@ component extends="cborm.models.EventHandler"{
 			, link_image_upload_tx = arguments.rc.link_image_upload_tx
 			, strImageType = "link"
 			, strUploadedImagesFolderLocation = application.stcApplicationCustomSettings.strUploadedLinkImagesFolderLocation
-			, aryImageProperties = [
-				{
-					intWidth = 64
-					, intHeight = 64
-				}
-			]
-		)
+			, stcImageProperties = {
+				intWidth = 64
+				, intHeight = 64
+			}
+		);
 
 		request.aryLink.setLink_name_tx(arguments.rc.link_name_tx);
 		request.aryLink.setLink_url_tx(arguments.rc.link_url_tx);

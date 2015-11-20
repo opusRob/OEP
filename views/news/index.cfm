@@ -24,6 +24,10 @@
         </div>
     </header> --->
 
+	<form name="post_form" id="post_form" action="#event.buildLink('news.remove')#" method="post">
+		<input type="hidden" name="post_id" id="post_id" value="0"/>
+	</form>
+
 	<div class="row">
 		<div class="<!--- col-lg-8 ---> <!--- col-lg-offset-1 ---> <!--- col-md-10  ---><!--- col-md-offset-1 --->" style="padding-left: 20px; ">
 			<cfset variables.intRowCount = 0/>

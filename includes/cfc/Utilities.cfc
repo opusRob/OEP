@@ -74,18 +74,19 @@ component {
 			local.strFullFilePath = expandPath(arguments.strUploadedImagesFolderLocation & local.strFileName);
 
 			/*-- If the file is an image file: --*/
-			if (
-				isImageFile(local.strFullFilePath)
-				AND structKeyExists(arguments, "aryImageProperties")
-				AND isArray(arguments.aryImageProperties)
-				AND arrayLen(arguments.aryImageProperties)
-				AND structKeyExists(arguments.aryImageProperties[1], "intWidth")
-				AND structKeyExists(arguments.aryImageProperties[1], "intHeight")
-			) {
-				/*-- Resize the image on the hard drive: --*/
-				local.objImage = imageNew(local.strFullFilePath);
-				imageScaleToFit(local.objImage, arguments.aryImageProperties[1].intWidth, arguments.aryImageProperties[1].intHeight);
-				imageWrite(local.objImage, local.strFullFilePath);
+			if (isImageFile(local.strFullFilePath)) {
+				/*-- If resizing params exist: --*/
+				if (
+					structKeyExists(arguments, "stcImageProperties")
+					AND isStruct(arguments.stcImageProperties)
+					AND structKeyExists(arguments.stcImageProperties, "intWidth")
+					AND structKeyExists(arguments.stcImageProperties, "intHeight")
+				) {
+					/*-- Resize the image on the hard drive: --*/
+					local.objImage = imageNew(local.strFullFilePath);
+					imageScaleToFit(local.objImage, arguments.stcImageProperties.intWidth, arguments.stcImageProperties.intHeight);
+					imageWrite(local.objImage, local.strFullFilePath);
+				}
 			/*-- Else if the file is NOT an image file: --*/
 			} else {
 				/*-- Since the file shouldn't be here if it's not an image, delete the image from the server,

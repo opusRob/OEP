@@ -8,7 +8,9 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 
 	// Properties
 	//property name="post_post_type_id" ormtype="int" notNull=true;	property name="post_headline_tx" ormtype="string" length=255 notNull=true;
-	property name="post_body_tx" ormtype="string" length=4000;	//property name="post_create_user_id" ormtype="int" notNull=true;	//property name="post_update_user_id" ormtype="int";	property name="post_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="post_update_datetime_dt" ormtype="timestamp";
+	property name="post_body_tx" ormtype="string" length=4000;
+	property name="post_large_image_file_name_tx" ormtype="string" length=500 default="";
+	property name="post_small_image_file_name_tx" ormtype="string" length=500 default="";	//property name="post_create_user_id" ormtype="int" notNull=true;	//property name="post_update_user_id" ormtype="int";	property name="post_create_datetime_dt" ormtype="timestamp" notNull=true;	property name="post_update_datetime_dt" ormtype="timestamp";
 
 	// Calculated
 	property name="post_update_create_datetime_dt" type="timestamp" formula="SELECT COALESCE(post_update_datetime_dt, post_create_datetime_dt)";
@@ -26,6 +28,22 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 	};
 
 	// Custom functions:
+	function getImageSrcAttr() {
+		if (arguments.strImageType EQ "news") {
+			if (arguments.strImageSize EQ "large") {
+				return application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation & this.getPost_large_image_file_name_tx();
+			} else if (arguments.strImageSize EQ "small") {
+				return application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation & this.getPost_small_image_file_name_tx();
+			}
+		} else if (arguments.strImageType EQ "blog") {
+			if (arguments.strImageSize EQ "large") {
+				return application.stcApplicationCustomSettings.strUploadedBlogImagesFolderLocation & this.getPost_large_image_file_name_tx();
+			} else if (arguments.strImageSize EQ "small") {
+				return application.stcApplicationCustomSettings.strUploadedBlogImagesFolderLocation & this.getPost_small_image_file_name_tx();
+			}
+		}
+		return "";
+	}
 
 	// Constructor
 	function init(){
