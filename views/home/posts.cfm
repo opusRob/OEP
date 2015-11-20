@@ -4,23 +4,43 @@
 		<cfloop array="#request['ary' & variables.strPostType]#" index="variables.objPost">
 			<cfset variables.intRowCount++/>
 			<div class="post-preview">
-				<a href="#event.buildLink('news.item.#variables.objPost.getPost_id()#')#">
+				<a href="#event.buildLink(lCase(variables.strPostType) & '.item.#variables.objPost.getPost_id()#')#">
 					<h2 class="post-title">
 						#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 					</h2>
-					<h3 class="post-subtitle">
-						<!--- #len(trim(variables.objPost.getPost_preview_tx())) ? variables.objPost.getPost_preview_tx() : "&nbsp;"# --->
-						<cfif len(trim(variables.objPost.getPost_body_tx()))>
-							#left(
-								request.cfcUtilities.stripHTML(
-									variables.objPost.getPost_body_tx()
-								)
-								, 200
-							)#
-						<cfelse>
-							&nbsp;
+					<div>
+						<cfif
+							len(trim(variables.objPost.getPost_small_image_file_name_tx()))
+							AND fileExists(expandPath(application.stcApplicationCustomSettings["strUploaded#variables.strPostType#ImagesFolderLocation"] & variables.objPost.getPost_small_image_file_name_tx()))
+							AND isImageFile(expandPath(application.stcApplicationCustomSettings["strUploaded#variables.strPostType#ImagesFolderLocation"] & variables.objPost.getPost_small_image_file_name_tx()))
+						>
+							<img
+								class="visible-lg-inline visible-md-inline"
+								src="#application.stcApplicationCustomSettings['strUploaded#variables.strPostType#ImagesFolderLocation'] & variables.objPost.getPost_small_image_file_name_tx()#"
+								alt="#variables.objPost.getPost_headline_tx()# Image"
+								style="width: 75px; height: 75px; border: solid 1px ##cccccc; margin: 0px 15px 15px 0px; float: left; "
+							/>
+							<img
+								class="visible-sm-inline <!--- visible-xs-inline --->"
+								src="#application.stcApplicationCustomSettings['strUploaded#variables.strPostType#ImagesFolderLocation'] & variables.objPost.getPost_small_image_file_name_tx()#"
+								alt="#variables.objPost.getPost_headline_tx()# Image"
+								style="width: 50px; height: 50px; border: solid 1px ##cccccc; margin: 0px 15px 15px 0px; float: left; "
+							/>
 						</cfif>
-					</h3>
+						<h3 class="post-subtitle" style="font-weight: 300; ">
+							<!--- #len(trim(variables.objPost.getPost_preview_tx())) ? variables.objPost.getPost_preview_tx() : "&nbsp;"# --->
+							<cfif len(trim(variables.objPost.getPost_body_tx()))>
+								#left(
+									request.cfcUtilities.stripHTML(
+										replaceNoCase(variables.objPost.getPost_body_tx(), "[[[IMAGE]]]", "", "all")
+									)
+									, 200
+								)#
+							<cfelse>
+								&nbsp;
+							</cfif>
+						</h3>
+					</div>
 				</a>
 				<p class="post-meta">
 					<cfif isDate(variables.objPost.getPost_update_datetime_dt())>

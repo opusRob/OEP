@@ -16,6 +16,8 @@ component extends="cborm.models.EventHandler"{
 	}
 	function item(event,rc,prc) {
 		request.aryPost = entityLoadByPK("Post", val(listLast(request.cb_requestContext.getCurrentRoutedURL(), "/")));
+		request.strUploadedImagesFolderLocation = application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation;
+		request.strImageContent = "";
 		event.setView("news/item");
 	}
 	function add(event,rc,prc) {

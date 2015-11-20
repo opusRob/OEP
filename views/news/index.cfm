@@ -38,18 +38,38 @@
 						<h2 class="post-title">
 							#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 						</h2>
-						<h3 class="post-subtitle">
-							<cfif len(trim(variables.objPost.getPost_body_tx()))>
-								#left(
-									request.cfcUtilities.stripHTML(
-										variables.objPost.getPost_body_tx()
-									)
-									, 200
-								)#
-							<cfelse>
-								&nbsp;
+						<div>
+							<cfif
+								len(trim(variables.objPost.getPost_small_image_file_name_tx()))
+								AND fileExists(expandPath(application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation & variables.objPost.getPost_small_image_file_name_tx()))
+								AND isImageFile(expandPath(application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation & variables.objPost.getPost_small_image_file_name_tx()))
+							>
+								<img
+									class="visible-lg-inline visible-md-inline"
+									src="#application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation & variables.objPost.getPost_small_image_file_name_tx()#"
+									alt="#variables.objPost.getPost_headline_tx()# Image"
+									style="width: 150px; height: 150px; border: solid 1px ##cccccc; margin: 0px 15px 15px 0px; float: left; "
+								/>
+								<img
+									class="visible-sm-inline <!--- visible-xs-inline --->"
+									src="#application.stcApplicationCustomSettings.strUploadedNewsImagesFolderLocation & variables.objPost.getPost_small_image_file_name_tx()#"
+									alt="#variables.objPost.getPost_headline_tx()# Image"
+									style="width: 75px; height: 75px; border: solid 1px ##cccccc; margin: 0px 15px 15px 0px; float: left; "
+								/>
 							</cfif>
-						</h3>
+							<h3 class="post-subtitle" style="font-weight: 300; ">
+								<cfif len(trim(variables.objPost.getPost_body_tx()))>
+									#left(
+										request.cfcUtilities.stripHTML(
+											replaceNoCase(variables.objPost.getPost_body_tx(), "[[[IMAGE]]]", "", "all")
+										)
+										, 200
+									)#
+								<cfelse>
+									&nbsp;
+								</cfif>
+							</h3>
+						</div>
 					</a>
 					<p class="post-meta">
 						<cfif isDate(variables.objPost.getPost_update_datetime_dt())>
@@ -64,7 +84,7 @@
 							at #timeFormat(variables.objPost.getPost_create_datetime_dt(), "h:mm TT")#
 						</cfif>
 						<cfif isUserInRole("administrator")>
-							<div style="">
+							<div style="clear: left; ">
 								<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('news.edit.#variables.objPost.getPost_id()#')#'; ">
 									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 								</button>
