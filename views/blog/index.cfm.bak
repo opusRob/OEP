@@ -84,7 +84,7 @@
 							at #timeFormat(variables.objPost.getPost_create_datetime_dt(), "h:mm TT")#
 						</cfif>
 						<cfif isUserInRole("administrator")>
-							<div style="clear: left; ">
+							<div style="">
 								<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('blog.edit.#variables.objPost.getPost_id()#')#'; ">
 									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 								</button>
