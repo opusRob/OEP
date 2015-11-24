@@ -29,48 +29,50 @@
 				<input type="text" class="form-control" name="post_headline_tx" id="post_headline_tx" maxlength="255" value="#request.aryPost.getPost_headline_tx()#"/>
 			</div>
 		</div>
-		<div class="col-sm-12" style="padding-bottom: 10px; ">
-			<div class="form-group">
-				<label class="col-md-2 control-label" style="padding-left: 0px; ">Image:</label>
-				<div class="col-md-10">
-					<cfif
-						len(trim(request.aryPost.getPost_small_image_file_name_tx()))
-						AND fileExists(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()))
-						AND isImageFile(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()))
-					>
-						<img
-							src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()#"
-							alt="#request.aryPost.getPost_headline_tx()# Image"
-							style="width: 150px; height: 150px; float: left; border: solid 1px ##cccccc; "
-						/>
-					<cfelse>
-						<img
-							src="#request.strUploadedImagesFolderLocation#_no_post_image_available.png"
-							alt="#request.aryPost.getPost_headline_tx()# Image Placeholder"
-							style="width: 150px; height: 150px; float: left; border: solid 1px ##cccccc; "
-						/>
-					</cfif>
+		<cfif listFindNoCase("news,blog", request.cb_requestContext.getCurrentHandler())>
+			<div class="col-sm-12" style="padding-bottom: 10px; ">
+				<div class="form-group">
+					<label class="col-md-2 control-label" style="padding-left: 0px; ">Image:</label>
+					<div class="col-md-10">
+						<cfif
+							len(trim(request.aryPost.getPost_small_image_file_name_tx()))
+							AND fileExists(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()))
+							AND isImageFile(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()))
+						>
+							<img
+								src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()#"
+								alt="#request.aryPost.getPost_headline_tx()# Image"
+								style="width: 150px; height: 150px; float: left; border: solid 1px ##cccccc; "
+							/>
+						<cfelse>
+							<img
+								src="#request.strUploadedImagesFolderLocation#_no_post_image_available.png"
+								alt="#request.aryPost.getPost_headline_tx()# Image Placeholder"
+								style="width: 150px; height: 150px; float: left; border: solid 1px ##cccccc; "
+							/>
+						</cfif>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="form-group">
-				<label for="post_image_upload_tx" class="col-md-2 control-label" style="padding-left: 0px; ">Upload Image:</label>
-				<div class="col-md-10">
-					<input type="file" class="" name="post_image_upload_tx" id="post_image_upload_tx"/>
+			<div class="col-sm-12">
+				<div class="form-group">
+					<label for="post_image_upload_tx" class="col-md-2 control-label" style="padding-left: 0px; ">Upload Image:</label>
+					<div class="col-md-10">
+						<input type="file" class="" name="post_image_upload_tx" id="post_image_upload_tx"/>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-12">
-			<div class="checkbox">
-				<div class="col-md-12" style="padding-left: 0px; ">
-					<label for="post_delete_image_bt" class="control-label">
-						<input type="checkbox" name="post_delete_image_bt" id="post_delete_image_bt" value="1"/>
-						Delete Image
-					</label>
+			<div class="col-sm-12">
+				<div class="checkbox">
+					<div class="col-md-12" style="padding-left: 0px; ">
+						<label for="post_delete_image_bt" class="control-label">
+							<input type="checkbox" name="post_delete_image_bt" id="post_delete_image_bt" value="1"/>
+							Delete Image
+						</label>
+					</div>
 				</div>
 			</div>
-		</div>
+		</cfif>
 		<div class="col-sm-12">
 			<div class="form-group">
 				<label for="post_body_tx" class="control-label">Body:</label>

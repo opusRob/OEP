@@ -48,6 +48,11 @@
 	addRoute(pattern = "link/:action?", handler = "link", action = "add");
 	addRoute(pattern = "link/:action?", handler = "link", action = "edit");
 
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "index");
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "item");
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "add");
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "edit");
+
 
 	/** Developers can modify the CGI.PATH_INFO value in advance of the SES
 		interceptor to do all sorts of manipulations in advance of route

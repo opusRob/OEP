@@ -75,6 +75,11 @@
 				blog,edit,true,true
 				blog,save,true,true
 				blog,remove,true,true
+				site_feedback_and_suggestions,index,true,false
+				site_feedback_and_suggestions,item,true,false
+				site_feedback_and_suggestions,add,true,false
+				site_feedback_and_suggestions,edit,true,false
+				site_feedback_and_suggestions,save,true,false
 				link,index,true,false
 				link,item,true,false
 				link,add,true,true

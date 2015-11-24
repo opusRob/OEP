@@ -25,6 +25,7 @@
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'news' ? 'active' : ''#"><a href="#event.buildLink('news.index')#">News</a></li>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'blog' ? 'active' : ''#"><a href="#event.buildLink('blog.index')#">Blog</a></li>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'link' ? 'active' : ''#"><a href="#event.buildLink('link.index')#">Links</a></li>
+		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'site_feedback_and_suggestions' ? 'active' : ''#"><a href="#event.buildLink('site_feedback_and_suggestions.index')#">Site Feedback and Suggestions</a></li>
 				<cfif isUserInRole("administrator")>
 		        	<li class="#request.cb_requestContext.getCurrentHandler() EQ 'user' ? 'active' : ''#"><a href="#event.buildLink('user.index')#">Users</a></li>
 				</cfif>

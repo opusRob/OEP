@@ -8,7 +8,7 @@ component persistent="true" table="post_types" extends="cborm.models.ActiveEntit
 
 	// Properties
 	property name="post_type_name_tx" ormtype="string" length=45 notNull=true;
-	property name="post_type_code_tx" ormtype="string" length=15 notNull=true unique=true;	property name="post_type_active_bt" ormtype="boolean" notNull=true;
+	property name="post_type_code_tx" ormtype="string" length=32 notNull=true unique=true;	property name="post_type_active_bt" ormtype="boolean" notNull=true;
 
 	// Relationships	property name="Posts" fieldType="one-to-many" fkColumn="post_type_id" cfc="Post";
 

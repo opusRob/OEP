@@ -153,6 +153,45 @@
 				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/> --->
 			</div>
 		</div>
+	<cfelseif request.cb_requestContext.getCurrentHandler() IS "site_feedback_and_suggestions">
+		<div class="jumbotron" style="margin-bottom: 0px; ">
+			<div class="container" style="text-align: center; ">
+				<h1
+					class="visible-lg-inline visible-md-inline visible-sm-inline"
+					style="display: inline; float: left; margin: 0px; font-size: 40px; "
+				>
+					<cfif request.cb_requestContext.getCurrentAction() IS "add">
+						<!--- Site Feedback and Suggestions: --->Add Site Feedback or Suggestion
+					<cfelseif request.cb_requestContext.getCurrentAction() IS "edit">
+						<!--- Site Feedback and Suggestions: --->Edit Site Feedback and Suggestion
+					<cfelse>
+						Site Feedback and Suggestions
+					</cfif>
+				</h1>
+				<h1
+					class="visible-xs-inline"
+					style="display: inline; float: left; margin: 0px; font-size: 25px; "
+				>
+					<cfif request.cb_requestContext.getCurrentAction() IS "add">
+						<!--- Site Feedback and Suggestions: --->Add Site Feedback and Suggestion
+					<cfelseif request.cb_requestContext.getCurrentAction() IS "edit">
+						<!--- Site Feedback and Suggestions: --->Edit Site Feedback and Suggestion
+					<cfelse>
+						Site Feedback and Suggestions
+					</cfif>
+				</h1>
+				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
+					<cfoutput>
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('site_feedback_and_suggestions.add')#'; ">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+					</cfoutput>
+				</cfif>
+				<!--- <img alt="Opus Group LLC logo" width="300" src="../includes/images/opus_logo.PNG" class="visible-lg-inline visible-md-inline visible-sm-inline" style="float: right; "/>
+				<!--- <img alt="Opus Group LLC logo" width="200" src="../includes/images/opus_logo.PNG" class="" style="float: right; "/> --->
+				<img alt="Opus Group LLC logo" width="150" src="../includes/images/opus_logo.PNG" class="visible-xs-inline" style="float: right; "/> --->
+			</div>
+		</div>
 	<cfelseif request.cb_requestContext.getCurrentHandler() IS "link">
 		<div class="jumbotron" style="margin-bottom: 0px; ">
 			<div class="container" style="text-align: center; ">
