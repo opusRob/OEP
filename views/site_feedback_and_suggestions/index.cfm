@@ -46,12 +46,24 @@
 						</cfif>
 						<cfif isUserInRole("administrator")>
 							<div style="clear: left; ">
-								<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
-									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-								</button>
+								<div class="btn-group" role="group" aria-label="">
+									<button type="button" class="btn btn-primary btn-xs" onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
+										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+										<span class="badge">#val(variables.objPost.getPost_upvotes_ct())#</span>
+									</button>
+									<button type="button" class="btn btn-info btn-xs" onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
+										<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+										<span class="badge">#val(variables.objPost.getPost_downvotes_ct())#</span>
+									</button>
+								</div>
+								<div class="btn-group" role="group" aria-label="">
+									<button type="button" class="btn btn-warning btn-xs" style="margin-left: 25px; " onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
+										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+									</button>
+								</div>
 							</div>
 						</cfif>
 					</p>

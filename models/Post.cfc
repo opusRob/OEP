@@ -14,8 +14,12 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 
 	// Calculated
 	property name="post_update_create_datetime_dt" type="timestamp" formula="SELECT COALESCE(post_update_datetime_dt, post_create_datetime_dt)";
+	property name="post_votes_ct" type="numeric" formula="SELECT COUNT(pv.post_vote_id) FROM post_votes pv WHERE pv.post_id = post_id";
+	property name="post_upvotes_ct" type="numeric" formula="SELECT COUNT(pv.post_vote_id) FROM post_votes pv WHERE pv.post_id = post_id AND pv.post_vote_is_upvote_bt = 'true'";
+	property name="post_downvotes_ct" type="numeric" formula="SELECT COUNT(pv.post_vote_id) FROM post_votes pv WHERE pv.post_id = post_id AND pv.post_vote_is_upvote_bt = 'false'";
 
 	// Relationships
+	property name="PostVotes" fieldType="one-to-many" fkColumn="post_id" cfc="Post_Vote";
 	property name="Tags" fieldType="many-to-many" fkColumn="posts_tags_xref_post_id" cfc="Tag" linkTable="posts_tags_xref" inverseJoinColumn="posts_tags_xref_tag_id";
 	property name="Comments" fieldType="one-to-many" fkColumn="post_id" cfc="Comment";
 	property name="PostType" fieldType="many-to-one" fkColumn="post_post_type_id" cfc="PostType";

@@ -19,3 +19,16 @@ div.post-preview {
 .post-preview p.post-meta {
 	font-size: 14px; 
 }
+
+
+a.header_link {
+	text-decoration: underline; 
+}
+div.see_more_button_link_div {
+	text-align: center;
+	margin-top: 25px;
+	clear: left;  
+}
+a.see_more_button_link {
+	width: 250px;  
+}

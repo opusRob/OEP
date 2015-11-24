@@ -75,6 +75,13 @@ component{
 
 	function sign_out () {
 		createObject("component", "handlers.authenticationUtilities").logout();
+
+		local.stcHTTPCall = createObject("component", "handlers.authenticationUtilities").makeHTTPCall(
+			stcAttributes = {
+				url = "https://mail.google.com/mail/u/0/?logout&hl=en"
+				, method = "get"
+			}
+		);
 		structClear(session);
 		//structDelete(session, "stcUserProperties");
 		//session.bolUserIsLoggedIn = false;
