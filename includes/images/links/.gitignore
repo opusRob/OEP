@@ -1,0 +1,6 @@
+# Ignore these:
+*
+
+# DON'T ignore these:
+!.gitignore
+!_no_link_image_available.png

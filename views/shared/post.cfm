@@ -2,31 +2,31 @@
 <cfsavecontent variable="request.strImageContent">
 	<cfoutput>
 		<cfif
-			len(trim(request.aryPost.getPost_small_image_file_name_tx()))
-			AND fileExists(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()))
-			AND isImageFile(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()))
+			len(trim(request.aryPost.getPost_large_image_file_name_tx()))
+			AND fileExists(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_large_image_file_name_tx()))
+			AND isImageFile(expandPath(request.strUploadedImagesFolderLocation & request.aryPost.getPost_large_image_file_name_tx()))
 		>
 			<img
 				class="visible-lg-inline"
-				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()#"
+				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_large_image_file_name_tx()#"
 				alt="#request.aryPost.getPost_headline_tx()# Image"
 				style="width: 300px; height: 300px; border: solid 1px ##cccccc; margin: 0px 15px 15px 0px; float: left; "
 			/>
 			<img
 				class="visible-md-inline"
-				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()#"
+				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_large_image_file_name_tx()#"
 				alt="#request.aryPost.getPost_headline_tx()# Image"
 				style="width: 250px; height: 250px; border: solid 1px ##cccccc; margin: 0px 15px 15px 0px; float: left; "
 			/>
 			<img
 				class="visible-sm-inline"
-				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()#"
+				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_large_image_file_name_tx()#"
 				alt="#request.aryPost.getPost_headline_tx()# Image"
 				style="width: 200px; height: 200px; border: solid 1px ##cccccc; margin: 0px 10px 10px 0px; float: left; "
 			/>
 			<img
 				class="visible-xs-inline"
-				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_small_image_file_name_tx()#"
+				src="#request.strUploadedImagesFolderLocation & request.aryPost.getPost_large_image_file_name_tx()#"
 				alt="#request.aryPost.getPost_headline_tx()# Image"
 				style="width: 100px; height: 100px; border: solid 1px ##cccccc; margin: 0px 10px 10px 0px; float: left; "
 			/>

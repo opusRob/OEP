@@ -7,7 +7,7 @@ $(document).ready(
 			{
 				height: 400,
 				chrome: "noheader nofooter noborders noscrollbar",
-				tweetLimit: 3
+				tweetLimit: 1
 			}
 		);
 	}
