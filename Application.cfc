@@ -83,6 +83,18 @@ component{
 				, value = GetHttpTimeString(Now())
 			}
 		);
+		createObject("component", "handlers.AuthenticationUtilities").header(
+			stcAttributes = {
+				name = "pragma"
+				, value = "no-cache"
+			}
+		);
+		createObject("component", "handlers.AuthenticationUtilities").header(
+			stcAttributes = {
+				name = "cache-control"
+				, value = "no-cache, no-store, must-revalidate"
+			}
+		);
 
 		param name="session.bolUserIsLoggedIn" default = false;
 		param name="session.bolUserIsAdmin" default = false;
