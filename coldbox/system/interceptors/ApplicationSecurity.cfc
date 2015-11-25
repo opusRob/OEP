@@ -74,15 +74,18 @@ component{
 	}
 
 	function sign_out () {
+		this.fileTrace(strText = "ApplicationSecurity.sign_out a");
 		createObject("component", "handlers.authenticationUtilities").logout();
+		this.fileTrace(strText = "ApplicationSecurity.sign_out b");
 
-		local.stcHTTPCall = createObject("component", "handlers.authenticationUtilities").makeHTTPCall(
+		/*local.stcHTTPCall = createObject("component", "handlers.authenticationUtilities").makeHTTPCall(
 			stcAttributes = {
 				url = "https://mail.google.com/mail/u/0/?logout&hl=en"
 				, method = "get"
 			}
-		);
+		);*/
 		structClear(session);
+		this.fileTrace(strText = "ApplicationSecurity.sign_out c");
 		//structDelete(session, "stcUserProperties");
 		//session.bolUserIsLoggedIn = false;
 //		session.bolUserIsAdmin = false;
@@ -196,10 +199,11 @@ component{
 					if (isUserLoggedIn()) {
 						this.fileTrace(strText = "securityCheck s");
 						this.sign_out();
-						setNextEvent("login.index");
+						//setNextEvent("login.index");
+						//event.setView("login.sign_out")
 					} else {
 						this.fileTrace(strText = "securityCheck t");
-						setNextEvent("login.index");
+						//setNextEvent("login.index");
 					}
 					break;
 
@@ -253,9 +257,9 @@ component{
 
 	function fileTrace(strText) {
 		trace(text = arguments.strText);
-		/*local.objFile = fileOpen("C:\OEP_Debug.txt", "append");
+		local.objFile = fileOpen("C:\Users\Rob Germain\Documents\OEP_Debug.txt", "append");
 		fileWriteLine(local.objFile, dateTimeFormat(now(), "mm/dd/yyyy TT:mm:ss") & ": " & arguments.strText);
-		fileClose(local.objFile);*/
+		fileClose(local.objFile);
 	}
 
 }

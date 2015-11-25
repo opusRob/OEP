@@ -38,6 +38,9 @@ component{
 	function no_such_resource(event,rc,prc){
 		event.setView("login/no_such_resource");
 	}
+	function sign_out(event, rc, prc) {
+		event.setView("login/sign_out")
+	}
 
 	function securityCheck(required string strHandler, required string strAction) {
 		//dump(arguments);

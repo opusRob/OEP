@@ -37,6 +37,7 @@ function onSignIn(googleUser) {
 	
 	$("#auth_form").submit();
 	$("#btn_login").prop("disabled", true);
+	//$("#btn_login").prop("disabled", false);
 	
 	
 	

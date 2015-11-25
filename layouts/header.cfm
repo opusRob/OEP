@@ -1,3 +1,4 @@
+
 <header class="header">
 	<cfif listFindNoCase("home,login", request.cb_requestContext.getCurrentHandler())>
 		<div class="jumbotron" style="margin-bottom: 0px; ">
@@ -20,18 +21,26 @@
 		</div>
 		<div class="jumbotron" style="background: #ffffff; color: #021139; margin-top: 0px; ">
 			<div class="container" style="text-align: center; ">
-					<h2 style="font-size: 40px; ">Log In</h2>
-					<p style="font-size: 14px; ">Authenticate using your Opus Group Google credentials.</p>
-					<!--- <div class="g-signin2" data-onsuccess="onSignIn" align="center"></div> --->
-					<div id="google_signin" align="center"></div>
-					<cfoutput>
-						<form name="auth_form" id="auth_form" method="post" action="#event.buildLink(linkTo = 'login.authenticate', ssl = false)#">
-							<input type="hidden" name="id_token" id="id_token" value=""/>
-							<input type="hidden" name="access_token" id="access_token" value=""/>
-							<input type="hidden" name="user_google_username_tx" id="user_google_username_tx" value=""/>
-							<input type="submit" name="btn_login" id="btn_login" value="Log Into Application" class="btn btn-lg btn-info" disabled style="width: 250px; margin: 20px 0px 5px 0px; "/>
-						</form>
-					</cfoutput>
+					<cfif request.cb_requestContext.getCurrentAction() IS "sign_out">
+						<div id="alert_signout_app" class="alert alert-success" role="alert">You have successfully signed out of the application.</div>
+						<div id="alert_signout_google" class="" role="alert"></div>
+						<cfoutput>
+							<input type="button" name="btn_return_to_login" id="btn_return_to_login" value="Return to Login Page" class="btn btn-lg btn-primary" onClick="location.href='#event.buildLink('login.index')#'; "/>
+						</cfoutput>
+					<cfelse>
+						<h2 style="font-size: 40px; ">Log In</h2>
+						<p style="font-size: 14px; ">Authenticate using your Opus Group Google credentials.</p>
+						<!--- <div class="g-signin2" data-onsuccess="onSignIn" align="center"></div> --->
+						<div id="google_signin" align="center"></div>
+						<cfoutput>
+							<form name="auth_form" id="auth_form" method="post" action="#event.buildLink(linkTo = 'login.authenticate', ssl = false)#">
+								<input type="hidden" name="id_token" id="id_token" value=""/>
+								<input type="hidden" name="access_token" id="access_token" value=""/>
+								<input type="hidden" name="user_google_username_tx" id="user_google_username_tx" value=""/>
+								<!--- <input type="submit" name="btn_login" id="btn_login" value="Log Into Application" class="btn btn-lg btn-info" disabled style="width: 250px; margin: 20px 0px 5px 0px; "/> --->
+							</form>
+						</cfoutput>
+					</cfif>
 				</cfif>
 
 			</div>
