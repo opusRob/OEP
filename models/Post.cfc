@@ -32,6 +32,20 @@ component persistent="true" table="posts" extends="cborm.models.ActiveEntity" {
 	};
 
 	// Custom functions:
+	function getPost_my_vote_tx() {
+		local.aryMyVotes = ORMExecuteQuery(
+			"SELECT post_vote_is_upvote_bt FROM post_votes WHERE post_id = ? AND post_vote_create_user_id = ?"
+			, [
+				this.getPost_id()
+				, session.stcUserProperties.stcOpusEmployeePortalUserProperties.user_id
+			]
+		);
+		if (arrayLen(local.aryMyVotes))
+			return local.aryMyVotes[1].post_vote_is_upvote_bt ? "Up" : "Down";
+		else
+			return "None";
+	}
+
 	function getImageSrcAttr() {
 		if (arguments.strImageType EQ "news") {
 			if (arguments.strImageSize EQ "large") {

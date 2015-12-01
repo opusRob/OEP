@@ -25,10 +25,17 @@ a.header_link {
 	text-decoration: underline; 
 }
 div.see_more_button_link_div {
-	text-align: center;
+	text-align: left;
 	margin-top: 25px;
 	clear: left;  
 }
 a.see_more_button_link {
+	font-size: 12px; 
+	color: #00619b;
+	text-decoration: underline; 
 	width: 250px;  
+	font-weight: bold; 
+}
+a.see_more_button_link:hover { 
+	color: #0085a1;
 }

@@ -66,10 +66,10 @@ component extends="cborm.models.EventHandler"{
 		request.aryPost.setPostType(entityLoadByPK("PostType", arguments.rc.post_post_type_id));
 
 		if (val(arguments.rc.post_id)) {
-			request.aryPost.setUpdatedByUser(entityLoadByPK("User", 1));
+			request.aryPost.setUpdatedByUser(entityLoadByPK("User", session.stcUserProperties.stcOpusEmployeePortalProperties.user_id));
 			request.aryPost.setPost_update_datetime_dt(now());
 		} else {
-			request.aryPost.setCreatedByUser(entityLoadByPK("User", 1));
+			request.aryPost.setCreatedByUser(entityLoadByPK("User", session.stcUserProperties.stcOpusEmployeePortalProperties.user_id));
 			request.aryPost.setPost_create_datetime_dt(now());
 		}
 

@@ -44,8 +44,15 @@
 							on #dateFormat(variables.objPost.getPost_create_datetime_dt(), "dddd mmmm d, yyyy")#
 							at #timeFormat(variables.objPost.getPost_create_datetime_dt(), "h:mm TT")#
 						</cfif>
-						<cfif isUserInRole("administrator")>
+						<!--- <cfif isUserInRole("administrator")>
 							<div style="clear: left; ">
+								<cfif variables.objPost.getPost_my_vote_tx() IS "Up">
+									<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+								<cfelseif variables.objPost.getPost_my_vote_tx() IS "Down">
+									<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+								<cfelse>
+									<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+								</cfif>
 								<div class="btn-group" role="group" aria-label="">
 									<button type="button" class="btn btn-primary btn-xs" onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
 										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -65,7 +72,7 @@
 									</button>
 								</div>
 							</div>
-						</cfif>
+						</cfif> --->
 					</p>
 				</div>
 				<cfif variables.intRowCount LT arrayLen(request.aryPosts)>

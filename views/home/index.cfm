@@ -10,8 +10,8 @@
 				</h3>
 				<cfinclude template="posts.cfm"/>
 				<div class="see_more_button_link_div">
-					<a href="#event.buildLink('#lCase(variables.strPostType)#.index')#" class="see_more_button_link btn-sm btn-info" role="button">
-						More #variables.strPostType# Entries
+					<a href="#event.buildLink('#lCase(variables.strPostType)#.index')#" class="see_more_button_link" role="button">
+						More #variables.strPostType# Entries &nbsp;&raquo;
 					</a>
 				</div>
 			</div>
@@ -29,8 +29,8 @@
 		</h3>
 		<cfinclude template="twitter.cfm"/>
 		<div class="see_more_button_link_div">
-			<a href="https://twitter.com/opusgroupllc" class="see_more_button_link btn-sm btn-info" role="button">
-				Opus Twitter Page
+			<a href="https://twitter.com/opusgroupllc" class="see_more_button_link" role="button">
+				Opus Twitter Page &nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
 			</a>
 		</div>
 	</div>
@@ -40,8 +40,8 @@
 		</h3>
 		<cfinclude template="linkedin.cfm"/>
 		<div class="see_more_button_link_div">
-			<a href="https://www.linkedin.com/company/opus-group-llc" class="see_more_button_link btn-sm btn-info" role="button">
-				Opus LinkedIn Page
+			<a href="https://www.linkedin.com/company/opus-group-llc" class="see_more_button_link" role="button">
+				Opus LinkedIn Page &nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
 			</a>
 		</div>
 	</div>
@@ -51,8 +51,8 @@
 		</h3>
 		<cfinclude template="google_calendar.cfm"/>
 		<div class="see_more_button_link_div">
-			<a id="google_calendar_link" href="##" class="see_more_button_link btn-sm btn-info" role="button">
-				Opus Google Calendar
+			<a id="google_calendar_link" href="##" class="see_more_button_link" role="button">
+				Opus Google Calendar &nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
 			</a>
 		</div>
 	</div>

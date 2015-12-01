@@ -43,10 +43,10 @@ component extends="cborm.models.EventHandler"{
 		request.aryLink.setLink_active_bt(structKeyExists(arguments.rc, "link_active_bt") ? arguments.rc.link_active_bt : false);
 
 		if (val(arguments.rc.link_id)) {
-			request.aryLink.setUpdatedByUser(entityLoadByPK("Link", 1));
+			request.aryLink.setUpdatedByUser(entityLoadByPK("Link", session.stcUserProperties.stcOpusEmployeePortalProperties.user_id));
 			request.aryLink.setLink_update_datetime_dt(now());
 		} else {
-			request.aryLink.setCreatedByUser(entityLoadByPK("Link", 1));
+			request.aryLink.setCreatedByUser(entityLoadByPK("Link", session.stcUserProperties.stcOpusEmployeePortalProperties.user_id));
 			request.aryLink.setLink_create_datetime_dt(now());
 		}
 
