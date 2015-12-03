@@ -12,46 +12,46 @@
 
 	// Base URL
 	if( len(getSetting('AppMapping') ) lte 1){
-		setBaseURL("http://#cgi.HTTP_HOST#/index.cfm");
+		setBaseURL("https://#cgi.HTTP_HOST#/index.cfm");
 	}
 	else{
-		setBaseURL("http://#cgi.HTTP_HOST#/#getSetting('AppMapping')#/index.cfm");
+		setBaseURL("https://#cgi.HTTP_HOST#/#getSetting('AppMapping')#/index.cfm");
 	}
 
 	// Your Application Routes
 	addRoute(pattern=":handler/:action?");
 
-	addRoute(pattern = "login", handler = "login", action = "index");
+	addRoute(pattern = "login", handler = "login", action = "index", ssl = true);
 	addRoute(pattern = "login", handler = "authenticate", action = "authenticate");
 
-	addRoute(pattern = "home", handler = "home", action = "index");
+	addRoute(pattern = "home", handler = "home", action = "index", ssl = true);
 
-	addRoute(pattern = "user/:action?", handler = "user", action = "index");
-	addRoute(pattern = "user/:action?", handler = "user", action = "add");
-	addRoute(pattern = "user/:action?", handler = "user", action = "edit");
+	addRoute(pattern = "user/:action?", handler = "user", action = "index", ssl = true);
+	addRoute(pattern = "user/:action?", handler = "user", action = "add", ssl = true);
+	addRoute(pattern = "user/:action?", handler = "user", action = "edit", ssl = true);
 
 	//addNameSpace(pattern = "/news", namespace = "news")
 //		.addRoute(pattern = "/", handler = "post", action = "index", namespace = "news");
 
-	addRoute(pattern = "news/:action?", handler = "news", action = "index");
-	addRoute(pattern = "news/:action?", handler = "news", action = "item");
-	addRoute(pattern = "news/:action?", handler = "news", action = "add");
-	addRoute(pattern = "news/:action?", handler = "news", action = "edit");
+	addRoute(pattern = "news/:action?", handler = "news", action = "index", ssl = true);
+	addRoute(pattern = "news/:action?", handler = "news", action = "item", ssl = true);
+	addRoute(pattern = "news/:action?", handler = "news", action = "add", ssl = true);
+	addRoute(pattern = "news/:action?", handler = "news", action = "edit", ssl = true);
 
-	addRoute(pattern = "blog/:action?", handler = "blog", action = "index");
-	addRoute(pattern = "blog/:action?", handler = "blog", action = "item");
-	addRoute(pattern = "blog/:action?", handler = "blog", action = "add");
-	addRoute(pattern = "blog/:action?", handler = "blog", action = "edit");
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "index", ssl = true);
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "item", ssl = true);
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "add", ssl = true);
+	addRoute(pattern = "blog/:action?", handler = "blog", action = "edit", ssl = true);
 
-	addRoute(pattern = "link/:action?", handler = "link", action = "index");
-	addRoute(pattern = "link/:action?", handler = "link", action = "item");
-	addRoute(pattern = "link/:action?", handler = "link", action = "add");
-	addRoute(pattern = "link/:action?", handler = "link", action = "edit");
+	addRoute(pattern = "link/:action?", handler = "link", action = "index", ssl = true);
+	addRoute(pattern = "link/:action?", handler = "link", action = "item", ssl = true);
+	addRoute(pattern = "link/:action?", handler = "link", action = "add", ssl = true);
+	addRoute(pattern = "link/:action?", handler = "link", action = "edit", ssl = true);
 
-	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "index");
-	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "item");
-	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "add");
-	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "edit");
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "index", ssl = true);
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "item", ssl = true);
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "add", ssl = true);
+	addRoute(pattern = "site_feedback_and_suggestions/:action?", handler = "site_feedback_and_suggestions", action = "edit", ssl = true);
 
 
 	/** Developers can modify the CGI.PATH_INFO value in advance of the SES

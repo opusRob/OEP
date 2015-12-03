@@ -20,7 +20,7 @@
 <!--- <cfdump var="#request.aryUser#"> --->
 
 <cfoutput>
-	<form method="post" name="user_form" id="user_form" action="#event.buildLink('user.save')#">
+	<form method="post" name="user_form" id="user_form" action="#event.buildLink(linkTo = 'user.save', ssl = true)#">
 		<input type="hidden" class="form-control" name="user_id" id="user_id" value="#request.aryUser.getUser_id()#"/>
 		<div class="col-sm-6">
 			<div class="form-group">

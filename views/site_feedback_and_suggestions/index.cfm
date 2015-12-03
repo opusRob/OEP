@@ -3,7 +3,7 @@
 	<!--- <cfdump var="#request.cb_requestContext.getCurrentHandler()#"/><cfabort> --->
 
 
-	<form name="post_form" id="post_form" action="#event.buildLink('site_feedback_and_suggestions.remove')#" method="post">
+	<form name="post_form" id="post_form" action="#event.buildLink(linkTo = 'site_feedback_and_suggestions.remove', ssl = true)#" method="post">
 		<input type="hidden" name="post_id" id="post_id" value="0"/>
 	</form>
 
@@ -13,7 +13,7 @@
 			<cfloop array="#request.aryPosts#" index="variables.objPost">
 				<cfset variables.intRowCount++/>
 				<div class="post-preview">
-					<a href="#event.buildLink('site_feedback_and_suggestions.item.#variables.objPost.getPost_id()#')#">
+					<a href="#event.buildLink(linkTo = 'site_feedback_and_suggestions.item.#variables.objPost.getPost_id()#', ssl = true)#">
 						<h2 class="post-title">
 							#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 						</h2>
@@ -54,17 +54,17 @@
 									<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
 								</cfif>
 								<div class="btn-group" role="group" aria-label="">
-									<button type="button" class="btn btn-primary btn-xs" onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
+									<button type="button" class="btn btn-primary btn-xs" onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
 										<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
 										<span class="badge">#val(variables.objPost.getPost_upvotes_ct())#</span>
 									</button>
-									<button type="button" class="btn btn-info btn-xs" onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
+									<button type="button" class="btn btn-info btn-xs" onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
 										<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
 										<span class="badge">#val(variables.objPost.getPost_downvotes_ct())#</span>
 									</button>
 								</div>
 								<div class="btn-group" role="group" aria-label="">
-									<button type="button" class="btn btn-warning btn-xs" style="margin-left: 25px; " onClick="location.href='#event.buildLink('site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#')#'; ">
+									<button type="button" class="btn btn-warning btn-xs" style="margin-left: 25px; " onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
 										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 									</button>
 									<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">

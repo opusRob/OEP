@@ -1,6 +1,6 @@
 <cfinclude template="../shared/post_add_edit.cfm"/>
 
-<!--- 
+<!---
 <!--- <cfdump var="#request#"> --->
 
 <!--- <cfloop list="#structKeyList(request.cb_requestContext)#" index="variables.i">
@@ -22,7 +22,7 @@
 <!--- <cfdump var="#request.aryPost#"> --->
 
 <cfoutput>
-	<form method="post" name="post_form" id="post_form" action="#event.buildLink('blog.save')#">
+	<form method="post" name="post_form" id="post_form" action="#event.buildLink(linkTo = 'blog.save', ssl = true)#">
 		<input type="hidden" class="form-control" name="post_id" id="post_id" value="#request.aryPost.getPost_id()#"/>
 		<input type="hidden" class="form-control" name="post_post_type_id" id="post_post_type_id" value="#request.aryPostType.getPost_type_id()#"/>
 		<div class="col-sm-12">

@@ -4,7 +4,7 @@
 		<cfloop array="#request['ary' & variables.strPostType]#" index="variables.objPost">
 			<cfset variables.intRowCount++/>
 			<div class="post-preview">
-				<a href="#event.buildLink(lCase(variables.strPostType) & '.item.#variables.objPost.getPost_id()#')#">
+				<a href="#event.buildLink(linkTo = lCase(variables.strPostType) & '.item.#variables.objPost.getPost_id()#', ssl = true)#">
 					<h2 class="post-title">
 						#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 					</h2>

@@ -20,7 +20,7 @@
 		<cfif isUserInRole("administrator")>
 			<th style="text-align: right; ">
 				<!--- <cfoutput>
-					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('user.add')#'; ">
+					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink(linkTo = 'user.add', ssl = true)#'; ">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
 				</cfoutput> --->
@@ -29,29 +29,29 @@
 		</cfif>
 	</tr>
 	<cfoutput>
-		<form method="post" name="users_form" id="users_form" action="#event.buildLink('user.remove')#">
+		<form method="post" name="users_form" id="users_form" action="#event.buildLink(linkTo = 'user.remove', ssl = true)#">
 			<input type="hidden" name="user_id" id="user_id" value="" maxlength="50"/>
 			<cfset variables.intRowCount = 0/>
 			<cfloop array="#request.aryUsers#" index="variables.objUser">
 				<cfset variables.intRowCount++/>
 				<tr>
 					<td>
-						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
+						<!--- <a href="#event.buildLink(linkTo = 'user.user.#variables.objUser.getUser_id()#', ssl = true)#"> --->
 							#len(trim(variables.objUser.getUser_last_name_tx())) ? variables.objUser.getUser_last_name_tx() : "&nbsp;"#
 						<!--- </a> --->
 					</td>
 					<td>
-						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
+						<!--- <a href="#event.buildLink(linkTo = 'user.user.#variables.objUser.getUser_id()#',, ssl = true)"> --->
 							#len(trim(variables.objUser.getUser_first_name_tx())) ? variables.objUser.getUser_first_name_tx() : "&nbsp;"#
 						<!--- </a> --->
 					</td>
 					<td class="visible-lg">
-						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
+						<!--- <a href="#event.buildLink(linkTo = 'user.user.#variables.objUser.getUser_id()#', ssl = true)#"> --->
 							#len(trim(variables.objUser.getUser_middle_name_tx())) ? variables.objUser.getUser_middle_name_tx() : "&nbsp;"#
 						<!--- </a> --->
 					</td>
 					<td class="hidden-xs">
-						<!--- <a href="#event.buildLink('user.user.#variables.objUser.getUser_id()#')#"> --->
+						<!--- <a href="#event.buildLink(linkTo = 'user.user.#variables.objUser.getUser_id()#', ssl = true)#"> --->
 							#len(trim(variables.objUser.getUser_google_username_tx())) ? variables.objUser.getUser_google_username_tx() : "&nbsp;"#
 						<!--- </a> --->
 					</td>
@@ -61,7 +61,7 @@
 					<td class="visible-lg">#isDate(variables.objUser.getUser_create_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<cfif isUserInRole("administrator")>
 						<td style="text-align: right; white-space: nowrap; ">
-							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('user.edit.#variables.objUser.getUser_id()#')#'; ">
+							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink(linkTo = 'user.edit.#variables.objUser.getUser_id()#', ssl = true)#'; ">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</button>
 							<button type="button" class="btn btn-danger btn-xs" onClick="userRemove(#variables.objUser.getUser_id()#)">

@@ -139,7 +139,9 @@ component{
 					this.fileTrace(strText = "securityCheck h");
 					//Google auth checks out?
 					local.stcHTTPCall = this.verifyGoogleIDToken(form.id_token);
+					dump(local.stcHTTPCall);
 					local.stcAuthenticationInfo = deserializeJSON(local.stcHTTPCall.fileContent);
+					dump(local.stcAuthenticationInfo);
 					if (NOT structKeyExists(local.stcAuthenticationInfo, "error_description")) {
 						this.fileTrace(strText = "securityCheck i");
 						//db check
@@ -258,7 +260,7 @@ component{
 	function fileTrace(strText) {
 		trace(text = arguments.strText);
 		local.objFile = fileOpen("C:\Users\Rob Germain\Documents\OEP_Debug.txt", "append");
-		fileWriteLine(local.objFile, dateTimeFormat(now(), "mm/dd/yyyy TT:mm:ss") & ": " & arguments.strText);
+		fileWriteLine(local.objFile, dateTimeFormat(now(), "mm/dd/yyyy HH:mm:ss") & ": " & arguments.strText);
 		fileClose(local.objFile);
 	}
 

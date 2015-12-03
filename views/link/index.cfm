@@ -14,7 +14,7 @@
 							Opus Group, LLC Links
 							&nbsp;&nbsp;
 							<cfif isUserInRole("administrator")>
-								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('link.add')#'; ">
+								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink(linkTo = 'link.add', ssl = true)#'; ">
 									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 								</button>
 							</cfif>
@@ -43,7 +43,7 @@
 		<cfif isUserInRole("administrator")>
 			<th style="text-align: right; ">
 				<!--- <cfoutput>
-					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('link.add')#'; ">
+					<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink(linkTo = 'link.add', ssl = true)#'; ">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					</button>
 				</cfoutput> --->
@@ -52,7 +52,7 @@
 		</cfif>
 	</tr>
 	<cfoutput>
-		<form method="post" name="links_form" id="links_form" action="#event.buildLink('link.remove')#">
+		<form method="post" name="links_form" id="links_form" action="#event.buildLink(linkTo = 'link.remove', ssl = true)#">
 			<input type="hidden" name="link_id" id="link_id" value="" maxlength="50"/>
 			<cfset variables.intRowCount = 0/>
 			<cfloop array="#request.aryLinks#" index="variables.objLink">
@@ -100,7 +100,7 @@
 					<td class="visible-lg">#isDate(variables.objLink.getLink_create_datetime_dt()) ? dateTimeFormat(variables.objLink.getLink_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<cfif isUserInRole("administrator")>
 						<td style="text-align: right; white-space: nowrap; ">
-							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('link.edit.#variables.objLink.getLink_id()#')#'; ">
+							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink(linkTo = 'link.edit.#variables.objLink.getLink_id()#', ssl = true)#'; ">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</button>
 							<button type="button" class="btn btn-danger btn-xs" onClick="linkRemove(#variables.objLink.getLink_id()#)">

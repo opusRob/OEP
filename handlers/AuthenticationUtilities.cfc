@@ -51,6 +51,7 @@
 		)/>
 		<cfsavecontent variable="local.lstData">
 			<cfoutput>
+				main,index,false,false
 				main,encountered_error,false,false
 				login,index,false,false
 				login,authenticate,false,false

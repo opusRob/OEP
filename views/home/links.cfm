@@ -2,7 +2,7 @@
 	<!--- <div class="<!--- panel panel-default --->">
 		<div class="<!--- panel-heading --->" style="height: 45px; ">
 			<h3 class="<!--- panel-title --->" style="margin: 0px; padding: 0px; <!--- float: left;  --->">
-				<a href="#event.buildLink('links.index')#">Links</a>
+				<a href="#event.buildLink(linkTo = 'links.index', ssl = true)#">Links</a>
 			</h3>
 		</div> --->
 		<div class="<!--- panel-body --->" style="text-align: center; ">

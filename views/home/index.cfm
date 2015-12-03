@@ -6,11 +6,11 @@
 		<cfloop list="News,Blog" index="variables.strPostType">
 			<div class="col-sm-6">
 				<h3 style="text-align: center; ">
-					<a href="#event.buildLink('#lCase(variables.strPostType)#.index')#" class="header_link">#variables.strPostType#</a>
+					<a href="#event.buildLink(linkTo = '#lCase(variables.strPostType)#.index', ssl = true)#" class="header_link">#variables.strPostType#</a>
 				</h3>
 				<cfinclude template="posts.cfm"/>
 				<div class="see_more_button_link_div">
-					<a href="#event.buildLink('#lCase(variables.strPostType)#.index')#" class="see_more_button_link" role="button">
+					<a href="#event.buildLink(linkTo = '#lCase(variables.strPostType)#.index', ssl = true)#" class="see_more_button_link" role="button">
 						More #variables.strPostType# Entries &nbsp;&raquo;
 					</a>
 				</div>
@@ -65,7 +65,7 @@
 	<div class="row">
 		<div class="col-sm-12" style="<!--- text-align: center;  --->">
 			<h3 class="<!--- panel-title --->" style="text-align: center; <!--- margin: 0px; padding: 0px;  ---><!--- float: left;  --->">
-				<a href="#event.buildLink('links.index')#">Links</a>
+				<a href="#event.buildLink(linkTo = 'links.index', ssl = true)#">Links</a>
 			</h3>
 			<cfinclude template="links.cfm"/>
 		</div>

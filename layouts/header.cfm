@@ -25,7 +25,7 @@
 						<div id="alert_signout_app" class="alert alert-success" role="alert">You have successfully signed out of the application.</div>
 						<div id="alert_signout_google" class="" role="alert"></div>
 						<cfoutput>
-							<input type="button" name="btn_return_to_login" id="btn_return_to_login" value="Return to Login Page" class="btn btn-lg btn-primary" onClick="location.href='#event.buildLink('login.index')#'; "/>
+							<input type="button" name="btn_return_to_login" id="btn_return_to_login" value="Return to Login Page" class="btn btn-lg btn-primary" onClick="location.href='#event.buildLink(linkTo = linkTo = 'login.index', ssl = true, ssl = true)#'; "/>
 						</cfoutput>
 					<cfelse>
 						<h2 style="font-size: 40px; ">Log In</h2>
@@ -33,7 +33,7 @@
 						<!--- <div class="g-signin2" data-onsuccess="onSignIn" align="center"></div> --->
 						<div id="google_signin" align="center"></div>
 						<cfoutput>
-							<form name="auth_form" id="auth_form" method="post" action="#event.buildLink(linkTo = 'login.authenticate', ssl = false)#">
+							<form name="auth_form" id="auth_form" method="post" action="#event.buildLink(linkTo = linkTo = 'login.authenticate', ssl = true, ssl = true)#">
 								<input type="hidden" name="id_token" id="id_token" value=""/>
 								<input type="hidden" name="access_token" id="access_token" value=""/>
 								<input type="hidden" name="user_google_username_tx" id="user_google_username_tx" value=""/>
@@ -74,7 +74,7 @@
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
 					<cfoutput>
-						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('user.add')#'; ">
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink(linkTo = linkTo = 'user.add', ssl = true, ssl = true)#'; ">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</cfoutput>
@@ -113,7 +113,7 @@
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
 					<cfoutput>
-						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('news.add')#'; ">
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink(linkTo = 'news.add', ssl = true)#'; ">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</cfoutput>
@@ -152,7 +152,7 @@
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
 					<cfoutput>
-						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('blog.add')#'; ">
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink(linkTo = 'blog.add', ssl = true)#'; ">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</cfoutput>
@@ -191,7 +191,7 @@
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
 					<cfoutput>
-						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('site_feedback_and_suggestions.add')#'; ">
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.add', ssl = true)#'; ">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</cfoutput>
@@ -230,7 +230,7 @@
 				</h1>
 				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
 					<cfoutput>
-						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink('link.add')#'; ">
+						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink(linkTo = 'link.add', ssl = true)#'; ">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</button>
 					</cfoutput>

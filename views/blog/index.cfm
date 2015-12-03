@@ -13,7 +13,7 @@
 							Opus Group, LLC Internal Blog
 							&nbsp;&nbsp;
 							<cfif isUserInRole("administrator")>
-								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink('blog.add')#'; ">
+								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink(linkTo = 'blog.add', ssl = true)#'; ">
 									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 								</button>
 							</cfif>
@@ -24,7 +24,7 @@
         </div>
     </header> --->
 
-	<form name="post_form" id="post_form" action="#event.buildLink('blog.remove')#" method="post">
+	<form name="post_form" id="post_form" action="#event.buildLink(linkTo = 'blog.remove', ssl = true)#" method="post">
 		<input type="hidden" name="post_id" id="post_id" value="0"/>
 	</form>
 
@@ -34,7 +34,7 @@
 			<cfloop array="#request.aryPosts#" index="variables.objPost">
 				<cfset variables.intRowCount++/>
 				<div class="post-preview">
-					<a href="#event.buildLink('blog.item.#variables.objPost.getPost_id()#')#">
+					<a href="#event.buildLink(linkTo = 'blog.item.#variables.objPost.getPost_id()#', ssl = true)#">
 						<h2 class="post-title">
 							#len(trim(variables.objPost.getPost_headline_tx())) ? variables.objPost.getPost_headline_tx() : "&nbsp;"#
 						</h2>
@@ -85,7 +85,7 @@
 						</cfif>
 						<cfif isUserInRole("administrator")>
 							<div style="clear: left; ">
-								<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink('blog.edit.#variables.objPost.getPost_id()#')#'; ">
+								<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink(linkTo = 'blog.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
 									<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 								</button>
 								<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
