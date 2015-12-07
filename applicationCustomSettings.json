@@ -3,4 +3,5 @@
 	, "strUploadedLinkImagesFolderLocation": "/includes/images/links/"
 	, "strUploadedNewsImagesFolderLocation": "/includes/images/news/"
 	, "strUploadedBlogImagesFolderLocation": "/includes/images/blog/"
+	, "bolShowErrorInfo": true
 }

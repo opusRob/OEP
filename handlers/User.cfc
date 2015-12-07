@@ -45,10 +45,10 @@ component extends="cborm.models.EventHandler"{
 		request.aryUser.setUser_active_bt(structKeyExists(arguments.rc, "user_active_bt") ? arguments.rc.user_active_bt : false);
 
 		if (val(arguments.rc.user_id)) {
-			request.aryUser.setUpdatedByUser(entityLoadByPK("User", session.stcUserProperties.stcOpusEmployeePortalProperties.user_id));
+			request.aryUser.setUpdatedByUser(entityLoadByPK("User", session.stcUserProperties.stcOpusEmployeePortalUserProperties.user_id));
 			request.aryUser.setUser_update_datetime_dt(now());
 		} else {
-			request.aryUser.setCreatedByUser(entityLoadByPK("User", session.stcUserProperties.stcOpusEmployeePortalProperties.user_id));
+			request.aryUser.setCreatedByUser(entityLoadByPK("User", session.stcUserProperties.stcOpusEmployeePortalUserProperties.user_id));
 			request.aryUser.setUser_create_datetime_dt(now());
 		}
 

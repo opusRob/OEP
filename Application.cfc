@@ -127,7 +127,7 @@ component{
 			location("#COLDBOX_APP_ROOT_PATH#/login.index", false);
 
 		}*/
-
+		dump(application.stcApplicationCustomSettings); abort;
 		if (structKeyExists(url, "dbinit")) {
 			writeOutput("<h2>Prepare to ormReload()...</h2>");
 			ormReload();
