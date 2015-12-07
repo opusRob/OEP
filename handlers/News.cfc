@@ -38,6 +38,9 @@ component extends="cborm.models.EventHandler"{
 		else
 			request.aryPost = entityNew("Post");
 
+		if (NOT structKeyExists(arguments.rc, "post_image_upload_tx"))
+			arguments.rc.post_image_upload_tx = "";
+
 		local.strLargeFileName = createObject("component", "includes.cfc.Utilities").processServerImage(
 			strImageFileName = request.aryPost.getPost_large_image_file_name_tx()
 			, bolDeleteImage = structKeyExists(arguments.rc, "post_delete_image_bt") AND arguments.rc.post_delete_image_bt

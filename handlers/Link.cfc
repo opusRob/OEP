@@ -23,6 +23,9 @@ component extends="cborm.models.EventHandler"{
 		else
 			request.aryLink = entityNew("Link");
 
+		if (NOT structKeyExists(arguments.rc, "link_image_upload_tx"))
+			arguments.rc.link_image_upload_tx = "";
+
 		local.strFileName = createObject("component", "includes.cfc.Utilities").processServerImage(
 			strImageFileName = request.aryLink.getLink_image_file_name_tx()
 			, bolDeleteImage = structKeyExists(arguments.rc, "link_delete_image_bt") AND arguments.rc.link_delete_image_bt

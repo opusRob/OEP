@@ -1,29 +1,5 @@
 <cfoutput>
 
-  <!---   <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>News</h1>
-                        <hr class="small">
-                        <span class="subheading">
-							Opus Group, LLC Internal News
-							&nbsp;&nbsp;
-							<cfif isUserInRole("administrator")>
-								<button type="button" class="btn btn-success btn-xs" onClick="location.href='#event.buildLink(linkTo = 'news.add', ssl = true)#'; ">
-									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-								</button>
-							</cfif>
-						</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> --->
-
 	<form name="post_form" id="post_form" action="#event.buildLink(linkTo = 'news.remove', ssl = true)#" method="post">
 		<input type="hidden" name="post_id" id="post_id" value="0"/>
 	</form>

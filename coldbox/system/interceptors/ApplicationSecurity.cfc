@@ -1,5 +1,5 @@
-component{
 
+component{
 	function preProcess(event, struct interceptData, buffer) {
 		//dump(var = arguments, label = "login.cfc preProcess arguments");
 		//this.fileTrace(strText = "redsox");
@@ -258,10 +258,10 @@ component{
 	}
 
 	function fileTrace(strText) {
-		trace(text = arguments.strText);
+		/*-- trace(text = arguments.strText);
 		local.objFile = fileOpen("C:\Users\Rob Germain\Documents\OEP_Debug.txt", "append");
 		fileWriteLine(local.objFile, dateTimeFormat(now(), "mm/dd/yyyy HH:mm:ss") & ": " & arguments.strText);
-		fileClose(local.objFile);
+		fileClose(local.objFile); --*/
 	}
 
 }
