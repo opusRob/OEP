@@ -75,7 +75,12 @@
 		</cfif>
 		<div class="col-sm-12">
 			<div class="form-group">
-				<label for="post_body_tx" class="control-label">Body:</label>
+				<label for="post_body_tx" class="control-label">
+					Body
+					<span
+						style="font-weight: normal; font-style: italic; "
+					>(currently <span id="post_body_char_length">#val(request.aryPost.getPost_body_tx())#</span> of 4000 allowed characters)</span>:
+				</label>
 				<textarea class="form-control" name="post_body_tx" id="post_body_tx" maxlength="4000" style="height: 200px; ">#request.aryPost.getPost_body_tx()#</textarea>
 			</div>
 		</div>

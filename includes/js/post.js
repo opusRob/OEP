@@ -21,6 +21,32 @@ $(document).ready(
 				, icon: '/includes/images/CKEditor/insert_picture.jpg'
 			}
 		);
+		objEditor.on(
+			"change"
+			, function() {
+				//console.log(objEditor.getData().length);
+				$("#post_body_char_length").html(objEditor.getData().length);
+			}
+		);
+		objEditor.on(
+			"mode"
+			, function() {
+				if (this.mode == "source") {
+					var editable = objEditor.editable();
+					editable.attachListener(
+						editable
+						, "input"
+						, function() {
+							// console.log(objEditor.getData().length);
+							$("#post_body_char_length").html(objEditor.getData().length);
+				        }
+					);
+				}
+			}
+		);
 		
 	}
 );
+
+
+//CKEDITOR.instances.editor1.getData().length

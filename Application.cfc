@@ -100,34 +100,10 @@ component{
 		param name="session.bolUserIsAdmin" default = false;
 
 		application.cbBootstrap.onRequestStart( arguments.targetPage );
-		//dump(var = request, label = "request"); abort;
 
-			/*writeoutput(request.cb_requestContext.getCurrentHandler());
-			writeoutput(request.cb_requestContext.getCurrentAction());
-			abort;*/
 
-		/*createObject("component", "handlers.login").securityCheck(
-			request.cb_requestContext.getCurrentHandler()
-			, request.cb_requestContext.getCurrentAction()
-		);*/
-
-		/*if (
-			request.cb_requestContext.getCurrentHandler() NEQ "login"
-			AND structKeyExists(session, "stcGoogleUserProperties")
-			AND structKeyExists(session.stcGoogleUserProperties, "id_token")
-			AND NOT (
-				createObject("component", "handlers.login").authenticate()
-			//	structKeyExists(session, "bolUserIsLoggedIn")
-				AND isBoolean(session.bolUserIsLoggedIn)
-				AND session.bolUserIsLoggedIn
-			)
-		) {
-			this.onSessionEnd(session, application);
-			structClear(session);
-			location("#COLDBOX_APP_ROOT_PATH#/login.index", false);
-
-		}*/
-		//dump(application.stcApplicationCustomSettings); abort;
+		/*-- BEGIN UPDATE OR DROP AND CREATE DATABASE OBJECTS: --*/
+		/*-- NOTE: If you are not deploying database changes, THIS CODE SHOULD BE COMMENTED OUT!!!! --*/
 		if (structKeyExists(url, "dbinit")) {
 			writeOutput("<h2>Prepare to ormReload()...</h2>");
 			ormReload();
@@ -140,6 +116,7 @@ component{
 				writeOutput("<h2>...initial data created.</h2>");
 			}
 		}
+		/*-- / END UPDATE OR DROP AND CREATE DATABASE OBJECTS. --*/
 
 		return true;
 	}

@@ -50,6 +50,7 @@
 			, "varchar,varchar,boolean,boolean"
 		)/>
 		<cfsavecontent variable="local.lstData">
+			<!--- handler,action,standard_user_required,is_admin_user_required --->
 			<cfoutput>
 				main,index,false,false
 				main,encountered_error,false,false
