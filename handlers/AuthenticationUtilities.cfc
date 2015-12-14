@@ -82,6 +82,7 @@
 				site_feedback_and_suggestions,add,true,false
 				site_feedback_and_suggestions,edit,true,false
 				site_feedback_and_suggestions,save,true,false
+				site_feedback_and_suggestions,remove,true,true
 				link,index,true,false
 				link,item,true,false
 				link,add,true,true

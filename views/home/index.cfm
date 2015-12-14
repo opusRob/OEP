@@ -9,11 +9,13 @@
 					<a href="#event.buildLink(linkTo = '#lCase(variables.strPostType)#.index', ssl = true)#" class="header_link">#variables.strPostType#</a>
 				</h3>
 				<cfinclude template="posts.cfm"/>
-				<div class="see_more_button_link_div">
-					<a href="#event.buildLink(linkTo = '#lCase(variables.strPostType)#.index', ssl = true)#" class="see_more_button_link" role="button">
-						More #variables.strPostType# Entries &nbsp;&raquo;
-					</a>
-				</div>
+				<cfif arrayLen(request['ary' & variables.strPostType])>
+					<div class="see_more_button_link_div">
+						<a href="#event.buildLink(linkTo = '#lCase(variables.strPostType)#.index', ssl = true)#" class="see_more_button_link" role="button">
+							More #variables.strPostType# Entries &nbsp;&raquo;
+						</a>
+					</div>
+				</cfif>
 			</div>
 		</cfloop>
 	</div>
@@ -23,7 +25,10 @@
 
 <hr/>
 <div class="row">
-	<div class="col-sm-4">
+	<!--- Note: The classes of the following divs ("col-sm-<number>") should total 12. Meaning, if there are
+		three (Twitter, LinkedIn and Google Calendar), then each would be "col-sm-4" because 4 * 3 = 12.  If there
+		are only two (Twitter and Google Calendar), then each would be "col-sm-6" because 6 * 2 = 12. --->
+	<div class="col-sm-6">
 		<h3 style="text-align: center; ">
 			<a href="https://twitter.com/opusgroupllc" class="header_link" target="_blank">Twitter</a>
 		</h3>
@@ -34,7 +39,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="col-sm-4">
+	<!--- <div class="col-sm-4">
 		<h3 style="text-align: center; ">
 			<a href="https://www.linkedin.com/company/opus-group-llc" class="header_link" target="_blank">LinkedIn</a>
 		</h3>
@@ -44,8 +49,8 @@
 				Opus LinkedIn Page &nbsp;<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
 			</a>
 		</div>
-	</div>
-	<div class="col-sm-4">
+	</div> --->
+	<div class="col-sm-6">
 		<h3 style="text-align: center; ">
 			<a id="google_calendar_link" href="##" class="header_link" target="_blank">Upcoming Events</a>
 		</h3>
