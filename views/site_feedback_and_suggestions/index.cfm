@@ -67,10 +67,10 @@
 										</button>
 									</div> --->
 									<div class="btn-group" role="group" aria-label="">
-										<button type="button" class="btn btn-warning btn-xs" style="margin-left: 25px; " onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
+										<button type="button" class="btn btn-warning btn-xs" style="margin-left: 25px; " title="Edit Feedback/Suggestion" onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
 											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 										</button>
-										<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
+										<button type="button" class="btn btn-danger btn-xs" title="Delete Feedback/Suggestion" onClick="postRemove(#variables.objPost.getPost_id()#)">
 											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 										</button>
 									</div>

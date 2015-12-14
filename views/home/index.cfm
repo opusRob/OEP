@@ -70,7 +70,7 @@
 	<div class="row">
 		<div class="col-sm-12" style="<!--- text-align: center;  --->">
 			<h3 class="<!--- panel-title --->" style="text-align: center; <!--- margin: 0px; padding: 0px;  ---><!--- float: left;  --->">
-				<a href="#event.buildLink(linkTo = 'links.index', ssl = true)#">Links</a>
+				<a href="#event.buildLink(linkTo = 'link.index', ssl = true)#">Links</a>
 			</h3>
 			<cfinclude template="links.cfm"/>
 		</div>

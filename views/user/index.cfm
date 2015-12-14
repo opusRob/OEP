@@ -61,10 +61,10 @@
 					<td class="visible-lg">#isDate(variables.objUser.getUser_create_datetime_dt()) ? dateTimeFormat(variables.objUser.getUser_create_datetime_dt(), "mm/dd/yyyy hh:mm:ss TT") : "&nbsp;"#</td>
 					<cfif isUserInRole("administrator")>
 						<td style="text-align: right; white-space: nowrap; ">
-							<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink(linkTo = 'user.edit.#variables.objUser.getUser_id()#', ssl = true)#'; ">
+							<button type="button" class="btn btn-warning btn-xs" title="Edit User" onClick="location.href='#event.buildLink(linkTo = 'user.edit.#variables.objUser.getUser_id()#', ssl = true)#'; ">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							</button>
-							<button type="button" class="btn btn-danger btn-xs" onClick="userRemove(#variables.objUser.getUser_id()#)">
+							<button type="button" class="btn btn-danger btn-xs" title="Delete User" onClick="userRemove(#variables.objUser.getUser_id()#)">
 								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 							</button>
 						</td>

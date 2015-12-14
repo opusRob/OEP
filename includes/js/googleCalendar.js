@@ -96,7 +96,7 @@
 
         request.execute(function(resp) {
           var events = resp.items;
-
+		
 	      if (events.length > 0) {
             for (var i = 0; i < events.length; i++) {
             	
@@ -148,38 +148,40 @@
       }
 
 	function getEventAttendeeInfo(event) {
+		var intInvitees = typeof event["attendees"] != "undefined" ? event["attendees"].length : 0;
 		var objEventAttendeeInfo = {
-			intInvitees: event["attendees"].length
+			intInvitees: intInvitees
 			, intNeedsAction: 0
 			, intDeclined: 0
 			, intTentative: 0
 			, intAccepted: 0
 			, strMyStatus: "You're not invited"
 		};
-		
-		for (var i = 0; i < event["attendees"].length; i++) {
-			var bolUser = event["attendees"][i]["email"].split("@")[0] == strGID;
-			switch(event["attendees"][i].responseStatus) {
-				case "needsAction":
-					objEventAttendeeInfo["intNeedsAction"]++;
-					if (bolUser)
-						objEventAttendeeInfo["strMyStatus"] = "You haven't responded";
-					break;
-				case "declined":
-					objEventAttendeeInfo["intDeclined"]++;
-					if (bolUser)
-						objEventAttendeeInfo["strMyStatus"] = "You declined";
-					break;
-				case "tentative":
-					objEventAttendeeInfo["intTentative"]++;
-					if (bolUser)
-						objEventAttendeeInfo["strMyStatus"] = "You are tentative";
-					break;
-				case "accepted":
-					objEventAttendeeInfo["intAccepted"]++;
-					if (bolUser)
-						objEventAttendeeInfo["strMyStatus"] = "You accepted";
-					break;
+		if (intInvitees) {
+			for (var i = 0; i < intInvitees; i++) {
+				var bolUser = event["attendees"][i]["email"].split("@")[0] == strGID;
+				switch(event["attendees"][i].responseStatus) {
+					case "needsAction":
+						objEventAttendeeInfo["intNeedsAction"]++;
+						if (bolUser)
+							objEventAttendeeInfo["strMyStatus"] = "You haven't responded";
+						break;
+					case "declined":
+						objEventAttendeeInfo["intDeclined"]++;
+						if (bolUser)
+							objEventAttendeeInfo["strMyStatus"] = "You declined";
+						break;
+					case "tentative":
+						objEventAttendeeInfo["intTentative"]++;
+						if (bolUser)
+							objEventAttendeeInfo["strMyStatus"] = "You are tentative";
+						break;
+					case "accepted":
+						objEventAttendeeInfo["intAccepted"]++;
+						if (bolUser)
+							objEventAttendeeInfo["strMyStatus"] = "You accepted";
+						break;
+				}
 			}
 		}
 		

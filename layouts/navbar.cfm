@@ -8,7 +8,7 @@
       </button>
       <a class="navbar-brand" href="#">
 		<!--- Opus Group, LLC --->
-		<img src="/includes/images/opus_logo_medium.png"/>
+		<img src="/includes/images/opus_logo_medium.png" width="160" height="32" style="cursor: pointer; "/>
 	  </a>
     </div>
 

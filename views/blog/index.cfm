@@ -88,10 +88,10 @@
 							</cfif>
 							<cfif isUserInRole("administrator")>
 								<div style="clear: left; ">
-									<button type="button" class="btn btn-warning btn-xs" onClick="location.href='#event.buildLink(linkTo = 'blog.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
+									<button type="button" class="btn btn-warning btn-xs" title="Edit Blog Entry" onClick="location.href='#event.buildLink(linkTo = 'blog.edit.#variables.objPost.getPost_id()#', ssl = true)#'; ">
 										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 									</button>
-									<button type="button" class="btn btn-danger btn-xs" onClick="postRemove(#variables.objPost.getPost_id()#)">
+									<button type="button" class="btn btn-danger btn-xs" title="Delete Blog Entry" onClick="postRemove(#variables.objPost.getPost_id()#)">
 										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 									</button>
 								</div>
