@@ -20,6 +20,7 @@
 <!--- <cfdump var="#request.aryLink#"> --->
 
 <cfoutput>
+	<div class="page_content_spacer"></div>
 	<form method="post" name="link_form" id="link_form" action="#event.buildLink(linkTo = 'link.save', ssl = true)#" enctype="multipart/form-data">
 		<input type="hidden" class="form-control" name="link_id" id="link_id" value="#request.aryLink.getLink_id()#"/>
 		<input type="hidden" class="form-control" name="link_order_int" id="link_order_int" value="#val(request.aryLink.getLink_order_int())#"/>

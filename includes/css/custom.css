@@ -175,3 +175,7 @@ a {
 div.paginator_div {
 	float: right; 
 }
+
+.page_content_spacer {
+	height: 15px; 
+}

@@ -20,6 +20,7 @@
 <!--- <cfdump var="#request.aryPost#"> --->
 
 <cfoutput>
+	<div class="page_content_spacer"></div>
 	<form method="post" name="post_form" id="post_form" action="#event.buildLink(linkTo = request.cb_requestContext.getCurrentHandler() & '.save', ssl = true)#" enctype="multipart/form-data">
 		<input type="hidden" class="form-control" name="post_id" id="post_id" value="#request.aryPost.getPost_id()#"/>
 		<input type="hidden" class="form-control" name="post_post_type_id" id="post_post_type_id" value="#request.aryPostType.getPost_type_id()#"/>
