@@ -23,6 +23,7 @@
 
 	addRoute(pattern = "login", handler = "login", action = "index", ssl = true);
 	addRoute(pattern = "login", handler = "authenticate", action = "authenticate");
+	addRoute(pattern = "login", handler = "invalid_user", action = "invalid_user");
 
 	addRoute(pattern = "home", handler = "home", action = "index", ssl = true);
 

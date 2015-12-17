@@ -139,9 +139,9 @@ component{
 					this.fileTrace(strText = "securityCheck h");
 					//Google auth checks out?
 					local.stcHTTPCall = this.verifyGoogleIDToken(form.id_token);
-					dump(local.stcHTTPCall);
+					//dump(local.stcHTTPCall);
 					local.stcAuthenticationInfo = deserializeJSON(local.stcHTTPCall.fileContent);
-					dump(local.stcAuthenticationInfo);
+					//dump(local.stcAuthenticationInfo);
 					if (NOT structKeyExists(local.stcAuthenticationInfo, "error_description")) {
 						this.fileTrace(strText = "securityCheck i");
 						//db check
@@ -177,14 +177,16 @@ component{
 							setNextEvent("home.index");
 						} else {
 							this.fileTrace(strText = "securityCheck m");
-							setNextEvent("login.index");
+							setNextEvent("login.invalid_user");
 						}
 					} else {
 						this.fileTrace(strText = "securityCheck n");
 						setNextEvent("login.index");
 					}
 					break;
-
+				case "login.invalid_user":
+					//continue to login.invalid_user;
+					break;
 				case "login.no_access,login.no_such_resource":
 					this.fileTrace(strText = "securityCheck o");
 					if (isUserLoggedIn()) {
@@ -259,7 +261,7 @@ component{
 
 	function fileTrace(strText) {
 		/*-- trace(text = arguments.strText);
-		local.objFile = fileOpen("C:\Users\Rob Germain\Documents\OEP_Debug.txt", "append");
+		local.objFile = fileOpen("C:\OEP_Debug.txt", "append");
 		fileWriteLine(local.objFile, dateTimeFormat(now(), "mm/dd/yyyy HH:mm:ss") & ": " & arguments.strText);
 		fileClose(local.objFile); --*/
 	}

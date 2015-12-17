@@ -27,6 +27,11 @@
 						<cfoutput>
 							<input type="button" name="btn_return_to_login" id="btn_return_to_login" value="Return to Login Page" class="btn btn-lg btn-primary" onClick="location.href='#event.buildLink(linkTo = linkTo = 'login.index', ssl = true, ssl = true)#'; "/>
 						</cfoutput>
+					<cfelseif request.cb_requestContext.getCurrentAction() IS "invalid_user">
+						<div class="alert alert-danger" role="alert">Your user account doesn't exist or is invalid.</div>
+						<cfoutput>
+							<input type="button" name="btn_sign_out" id="btn_sign_out" value="Sign Out of Google Session" class="btn btn-lg btn-primary" onClick="location.href='#event.buildLink(linkTo = linkTo = 'login.sign_out', ssl = true, ssl = true)#'; "/>
+						</cfoutput>
 					<cfelse>
 						<h2 style="font-size: 40px; ">Log In</h2>
 						<p style="font-size: 14px; ">Authenticate using your Opus Group Google credentials.</p>

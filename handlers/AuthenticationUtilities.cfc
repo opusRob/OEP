@@ -56,6 +56,7 @@
 				main,encountered_error,false,false
 				login,index,false,false
 				login,authenticate,false,false
+				login,invalid_user,false,false
 				login,sign_out,false,false
 				login,no_access,true,false
 				login,no_such_resource,true,false

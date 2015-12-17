@@ -32,6 +32,9 @@ component{
 	function index(event,rc,prc){
 		event.setView("login/index");
 	}
+	function invalid_user(event,rc,prc){
+		event.setView("login/invalid_user");
+	}
 	function no_access(event,rc,prc){
 		event.setView("login/no_access");
 	}
@@ -40,148 +43,6 @@ component{
 	}
 	function sign_out(event, rc, prc) {
 		event.setView("login/sign_out")
-	}
-
-	function securityCheck(required string strHandler, required string strAction) {
-		//dump(arguments);
-		trace(text = "securityCheck a");
-		local.strHandlerAction = arguments.strHandler & "." & arguments.strAction;
-		local.objAuthenticationUtilities = createObject("component", "authenticationUtilities");
-		local.qryPagesAndRoles = local.objAuthenticationUtilities.getPagesAndRoles(
-			strHandler = arguments.strHandler
-			, strAction = arguments.strAction
-		);
-
-		trace(text = "securityCheck b");
-		local.strRolesRequired = "";
-		if (local.qryPagesAndRoles.recordCount) {
-			if (local.qryPagesAndRoles.requires_standard_user_bt)
-				local.strRolesRequired = listAppend(local.strRolesRequired, "standard_user");
-			if (local.qryPagesAndRoles.requires_administrator_bt)
-				local.strRolesRequired = listAppend(local.strRolesRequired, "administrator");
-		}
-
-		trace(text = "securityCheck c");
-		if (local.qryPagesAndRoles.recordCount) {
-			trace(text = "securityCheck d");
-			switch(local.strHandlerAction) {
-				case "login.index":
-					trace(text = "securityCheck e");
-					if (isUserLoggedIn()) {
-						trace(text = "securityCheck f");
-						setNextEvent("home.index");
-					} else {
-						trace(text = "securityCheck g");
-						//continue to login.index
-					}
-					break;
-
-				case "login.authenticate":
-					trace(text = "securityCheck h");
-					//Google auth checks out?
-					local.stcHTTPCall = this.verifyGoogleIDToken(cflogin.password);
-					local.stcAuthenticationInfo = deserializeJSON(local.stcHTTPCall.fileContent);
-					if (NOT structKeyExists(local.stcAuthenticationInfo, "error_description")) {
-						trace(text = "securityCheck i");
-						//db check
-						local.aryUser = entityLoad(
-							"User"
-							, {
-								user_google_username_tx = form.user_google_username_tx
-								, user_active_bt = true
-							}
-							, true
-						);
-						trace(text = "securityCheck j");
-						if (arrayLen(local.aryUser)) {
-							trace(text = "securityCheck k");
-							//build session
-							session.stcUserProperties = this.buildUserPropertiesStructure(
-								strIDToken = arguments.rc.id_token
-								, strAccessToken = arguments.rc.access_token
-								, stcAuthenticationInfo = local.stcAuthenticationInfo
-							);
-							trace(text = "securityCheck l");
-							setNextEvent("home.index");
-						} else {
-							trace(text = "securityCheck m");
-							setNextEvent("login.index");
-						}
-					} else {
-						trace(text = "securityCheck n");
-						setNextEvent("login.index");
-					}
-					break;
-
-				case "login.no_access,login.no_such_resource":
-					trace(text = "securityCheck o");
-					if (isUserLoggedIn()) {
-						trace(text = "securityCheck p");
-						//continue to login.no_access / login.no_such_resource
-					} else {
-						trace(text = "securityCheck q");
-						setNextEvent("login.index");
-					}
-					break;
-
-				case "login.sign_out":
-					trace(text = "securityCheck r");
-					if (isUserLoggedIn()) {
-						trace(text = "securityCheck s");
-						this.sign_out();
-						setNextEvent("login.index");
-					} else {
-						trace(text = "securityCheck t");
-						setNextEvent("login.index");
-					}
-					break;
-
-				default:
-					trace(text = "securityCheck u");
-					if (isUserLoggedIn()) {
-						trace(text = "securityCheck v");
-						//user's role has access to page?
-						if (
-							(
-								NOT local.qryPagesAndRoles.requires_standard_user_bt
-								OR (
-									local.qryPagesAndRoles.requires_standard_user_bt
-									AND isUserInRole("standard_user")
-								)
-							) AND (
-								NOT local.qryPagesAndRoles.requires_administrator_bt
-								OR (
-									local.qryPagesAndRoles.requires_administrator_bt
-									AND isUserInRole("administrator")
-								)
-							)
-						) {
-							trace(text = "securityCheck w");
-							//Google auth checks out?
-							local.stcHTTPCall = this.verifyGoogleIDToken(cflogin.password);
-							local.stcAuthenticationInfo = deserializeJSON(local.stcHTTPCall.fileContent);
-							if (NOT structKeyExists(local.stcAuthenticationInfo, "error_description")) {
-								trace(text = "securityCheck x");
-								//continue to requested page.
-							} else {
-								trace(text = "securityCheck y");
-								this.sign_out();
-								setNextEvent("login.index");
-							}
-						} else {
-							trace(text = "securityCheck z");
-							setNextEvent("login.no_access");
-						}
-					} else {
-						trace(text = "securityCheck aa");
-						setNextEvent("login.index");
-					}
-					break;
-			}
-		} else {
-			trace(text = "securityCheck ab");
-			setNextEvent("login.no_such_resource");
-		}
 	}
 
 	function verifyGoogleIDToken(strIDToken) {
