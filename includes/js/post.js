@@ -21,10 +21,19 @@ $(document).ready(
 				, icon: '/includes/images/CKEditor/insert_picture.jpg'
 			}
 		);
+		
+		var bolUndoTriggered = false;
 		objEditor.on(
 			"change"
 			, function() {
-				//console.log(objEditor.getData().length);
+				if (global["bolEditorAutoUndo"]) {
+					if (objEditor.getData().length > 4000 && !bolUndoTriggered) {
+						bolUndoTriggered = true;
+						objEditor.execCommand("undo");
+					} else {
+						bolUndoTriggered = false;
+					}
+				}
 				$("#post_body_char_length").html(objEditor.getData().length);
 			}
 		);
@@ -37,13 +46,21 @@ $(document).ready(
 						editable
 						, "input"
 						, function() {
-							// console.log(objEditor.getData().length);
+							if (global["bolEditorAutoUndo"]) {
+								if (objEditor.getData().length > 4000 && !bolUndoTriggered) {
+									bolUndoTriggered = true;
+									objEditor.execCommand("undo");
+								} else {
+									bolUndoTriggered = false;
+								}
+							}
 							$("#post_body_char_length").html(objEditor.getData().length);
 				        }
 					);
 				}
 			}
 		);
+		
 		
 	}
 );

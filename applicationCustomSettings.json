@@ -4,4 +4,5 @@
 	, "strUploadedNewsImagesFolderLocation": "/includes/images/news/"
 	, "strUploadedBlogImagesFolderLocation": "/includes/images/blog/"
 	, "bolShowErrorInfo": true
+	, "bolEditorAutoUndo": true
 }
