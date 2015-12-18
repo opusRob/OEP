@@ -3,7 +3,7 @@ $(document).ready(
 		var objEditor = CKEDITOR.replace(
 			"post_body_tx"
 			, {
-				removePlugins: "image,flash,iframe,scayt,form,checkbox,radio,textfield,textarea,select,button,hiddenfield"
+				removePlugins: "image,flash,iframe"  //scayt,form,checkbox,radio,textfield,textarea,select,button,hiddenfield
 			}
 		);
 		

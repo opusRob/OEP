@@ -194,7 +194,7 @@
 						Site Feedback and Suggestions
 					</cfif>
 				</h1>
-				<cfif isUserInRole("administrator") AND request.cb_requestContext.getCurrentAction() IS "index">
+				<cfif request.cb_requestContext.getCurrentAction() IS "index">
 					<cfoutput>
 						<button type="button" class="btn btn-success btn-xs" style="float: right; " onClick="location.href='#event.buildLink(linkTo = 'site_feedback_and_suggestions.add', ssl = true)#'; ">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
