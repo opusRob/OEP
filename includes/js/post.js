@@ -1,6 +1,11 @@
 $(document).ready(
 	function() {
-		var objEditor = CKEDITOR.replace("post_body_tx");
+		var objEditor = CKEDITOR.replace(
+			"post_body_tx"
+			, {
+				removePlugins: "image,flash,iframe,scayt,form,checkbox,radio,textfield,textarea,select,button,hiddenfield"
+			}
+		);
 		
 		objEditor.addCommand(
 			"insertImageVariable"
