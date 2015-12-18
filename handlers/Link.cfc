@@ -40,6 +40,7 @@ component extends="cborm.models.EventHandler"{
 		);
 
 		request.aryLink.setLink_name_tx(arguments.rc.link_name_tx);
+		request.aryLink.setLink_https_bt(structKeyExists(arguments.rc, "link_https_bt") ? arguments.rc.link_https_bt : false);
 		request.aryLink.setLink_url_tx(arguments.rc.link_url_tx);
 		request.aryLink.setLink_image_file_name_tx(local.strFileName);
 		request.aryLink.setLink_order_int(arguments.rc.link_order_int);

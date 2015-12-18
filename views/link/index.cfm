@@ -67,7 +67,7 @@
 					<tr>
 						<td>
 							<cfif len(trim(variables.objLink.getLink_url_tx()))>
-								<a href="#variables.objLink.getLink_url_tx()#" target="_blank">
+								<a href="#variables.objLink.getLink_url_full_tx()#" target="_blank">
 							</cfif>
 							<cfif
 								len(trim(variables.objLink.getLink_image_file_name_tx()))
@@ -95,8 +95,8 @@
 						</td>
 						<td class="hidden-xs">
 							<cfif len(trim(variables.objLink.getLink_url_tx()))>
-								<a href="#variables.objLink.getLink_url_tx()#" target="_blank">
-									#variables.objLink.getLink_url_tx()#
+								<a href="#variables.objLink.getLink_url_full_tx()#" target="_blank">
+									#variables.objLink.getLink_url_full_tx()#
 								</a>
 							<cfelse>
 								&nbsp;

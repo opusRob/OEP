@@ -24,7 +24,7 @@
 	<form method="post" name="link_form" id="link_form" action="#event.buildLink(linkTo = 'link.save', ssl = true)#" enctype="multipart/form-data">
 		<input type="hidden" class="form-control" name="link_id" id="link_id" value="#request.aryLink.getLink_id()#"/>
 		<input type="hidden" class="form-control" name="link_order_int" id="link_order_int" value="#val(request.aryLink.getLink_order_int())#"/>
-		<div class="col-sm-6">
+		<div class="col-sm-12">
 			<div class="form-group">
 				<label for="link_name_tx" class="col-md-4 control-label">Link Name:</label>
 				<div class="col-md-8">
@@ -32,14 +32,30 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6">
+
+		<div class="col-sm-12">
 			<div class="form-group">
 				<label for="link_url_tx" class="col-md-4 control-label">Link URL:</label>
 				<div class="col-md-8">
-					<input type="text" class="form-control" name="link_url_tx" id="link_url_tx" maxlength="500" value="#request.aryLink.getLink_url_tx()#"/>
+					<div class="input-group">
+						<span class="input-group-addon" id="link_url_protocol_tx">#val(request.aryLink.getLink_https_bt()) ? 'https' : 'http'#://</span>
+						<input type="text" class="form-control" name="link_url_tx" id="link_url_tx" maxlength="500" value="#request.aryLink.getLink_url_tx()#"/>
+					</div>
 				</div>
 			</div>
 		</div>
+		<div class="col-sm-12">
+			<div class="checkbox">
+				<div class="col-md-4"></div>
+				<div class="col-md-8">
+					<label for="link_https_bt" class="control-label">
+						<input type="checkbox" name="link_https_bt" id="link_https_bt" value="1" #val(request.aryLink.getLink_https_bt()) ? 'checked' : ''#/>
+						HTTPS
+					</label>
+				</div>
+			</div>
+		</div>
+
 		<div class="col-sm-12">
 			<div class="form-group">
 				<label class="col-md-2 control-label">Link Icon Image:</label>

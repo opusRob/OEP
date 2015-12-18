@@ -15,11 +15,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  <cfoutput>
-		<cfif isUserLoggedIn()>
-	      <ul class="nav navbar-nav">
-	        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'home' ? 'active' : ''#"><a href="#event.buildLink('home.index')#">Home</a></li>
-	      </ul>
-	    </cfif>
 	      <ul class="nav navbar-nav navbar-right">
 			<cfif isUserLoggedIn()>
 		        <li class="#request.cb_requestContext.getCurrentHandler() EQ 'news' ? 'active' : ''#"><a href="#event.buildLink('news.index')#">News</a></li>

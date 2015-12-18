@@ -37,7 +37,7 @@ component{
 		request.aryPostType = entityLoad("PostType", {post_type_code_tx = "blog"}, true);
 		request.aryBlog = entityLoad("Post", {PostType = request.aryPostType}, "post_update_create_datetime_dt DESC", {maxResults = 3});
 
-		request.aryLinks = entityLoad("Link", {}, "link_update_create_datetime_dt DESC", {maxResults = 20});
+		request.aryLinks = entityLoad("Link", {link_active_bt = true}, "link_update_create_datetime_dt DESC", {maxResults = 20});
 
 		request.cfcUtilities = createObject("component", "includes.cfc.Utilities");
 
