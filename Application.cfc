@@ -104,7 +104,7 @@ component{
 
 		/*-- BEGIN UPDATE OR DROP AND CREATE DATABASE OBJECTS: --*/
 		/*-- NOTE: If you are not deploying database changes, THIS CODE SHOULD BE COMMENTED OUT!!!! --*/
-		if (structKeyExists(url, "dbinit")) {
+		/* if (structKeyExists(url, "dbinit")) {
 			writeOutput("<h2>Prepare to ormReload()...</h2>");
 			ormReload();
 			writeOutput("<h2>...ormReload() done.</h2>");
@@ -115,7 +115,7 @@ component{
 				);
 				writeOutput("<h2>...initial data created.</h2>");
 			}
-		}
+		} */
 		/*-- / END UPDATE OR DROP AND CREATE DATABASE OBJECTS. --*/
 
 		return true;
